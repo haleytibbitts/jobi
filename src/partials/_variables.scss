@@ -1,0 +1,22 @@
+// COLOURS
+$primary: #254135;
+$secondary: #31795a;
+$tertiary: #e9f2ef;
+$quaternary: #d2f34c;
+$quinary: #0f1620;
+$senary: #c4c4c4;
+$septenary: #f5f5f5;
+
+// FONTS
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+
+@font-face {
+  font-family: "Gordita Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Gordita Regular"),
+    url("../assets/fonts/Gordita-Regular.woff") format("woff");
+}
+
+$serif: "EB Garamond", serif;
+$sans: "Gordita Regular", sans-serif;

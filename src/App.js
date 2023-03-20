@@ -4,11 +4,28 @@ import firebase from "./firebase";
 function App() {
   return (
     <div>
-      <header>
-        <h1>Jobi</h1>
-      </header>
+      <header></header>
     </div>
   );
 }
 
 export default App;
+
+// SWAYDO CODE
+// COMPONENTS
+// TopNav
+// Header
+// SearchBar
+// Home
+// Category
+// Candidate
+// Review
+// BlogPost
+// JobListings
+// Filter
+// JobPreview
+// FullListing
+// Error
+// SignUp
+// BottomNav
+// Footer
