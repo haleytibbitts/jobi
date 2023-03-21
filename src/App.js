@@ -1,10 +1,13 @@
 import "./App.scss";
 import firebase from "./firebase";
+import TopNav from "./components/TopNav";
 
 function App() {
   return (
     <div>
-      <header></header>
+      <header>
+        <TopNav />
+      </header>
     </div>
   );
 }
@@ -18,9 +21,9 @@ export default App;
 // SearchBar
 // Home
 // Category
-// Candidate
+// TrendingJob
 // Review
-// BlogPost
+// Guides
 // JobListings
 // Filter
 // JobPreview
