@@ -1,13 +1,17 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.scss";
 import firebase from "./firebase";
-import TopNav from "./components/TopNav";
+import Header from "./components/Header";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div>
-      <header>
-        <TopNav />
-      </header>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }
@@ -16,9 +20,8 @@ export default App;
 
 // SWAYDO CODE
 // COMPONENTS
-// TopNav
-// Header
-// SearchBar
+// TopNav ✅
+// Header ✅
 // Home
 // Category
 // TrendingJob
