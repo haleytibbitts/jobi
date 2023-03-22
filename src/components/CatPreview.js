@@ -2,16 +2,18 @@ import { AiOutlineBank } from "react-icons/ai";
 import { BiSlider } from "react-icons/bi";
 import { BsVectorPen, BsBag, BsTelephone } from "react-icons/bs";
 import { HiCode } from "react-icons/hi";
-import SectionHeader from "./SectionHeader";
+import { Link } from "react-router-dom";
 
 const CatPreview = () => {
   return (
     <section className="catPreview">
       <div className="wrapper">
-        <SectionHeader
-          headerText="Most Demanding Categories."
-          linkText="Explore all fields"
-        />
+        <div className="sectionHeader">
+          <h2>Most Demanding Categories.</h2>
+          <Link to={"/categories"}>
+            <p>{`Explore all fields >`}</p>
+          </Link>
+        </div>
         <ul className="categories">
           <li>
             <BsVectorPen />

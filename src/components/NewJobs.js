@@ -1,14 +1,16 @@
 import JobListItem from "./JobListItem";
-import SectionHeader from "./SectionHeader";
+import { Link } from "react-router-dom";
 
 const NewJobs = () => {
   return (
     <section className="newJobs">
       <div className="wrapper">
-        <SectionHeader
-          headerText="New job listing"
-          linkText="Explore all jobs"
-        />
+        <div className="sectionHeader">
+          <h2>New job listing</h2>
+          <Link to={"/jobs"}>
+            <p>{`Explore all jobs >`}</p>
+          </Link>
+        </div>
         <ul className="jobs">
           <JobListItem />
           <JobListItem />
@@ -18,7 +20,7 @@ const NewJobs = () => {
         </ul>
         <p className="postJob">
           Do you want to post a job for your company? <span>We can help. </span>
-          <a href="">Click here</a>
+          <Link to={"/post"}>Click here</Link>
         </p>
       </div>
     </section>

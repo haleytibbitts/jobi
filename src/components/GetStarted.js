@@ -2,6 +2,7 @@ import { BsFillPlayCircleFill } from "react-icons/bs";
 import profile from "../assets/Profile.svg";
 import document from "../assets/Document.svg";
 import edit from "../assets/Edit.svg";
+import { Link } from "react-router-dom";
 
 const GetStarted = () => {
   return (
@@ -9,12 +10,12 @@ const GetStarted = () => {
       <div className="wrapper">
         <div className="flexContainer">
           <BsFillPlayCircleFill />
-          <h3>
+          <h2>
             Let's get started
             <span>
               It's <span>simple.</span>
             </span>
-          </h3>
+          </h2>
           <p>
             Get access to our top 1% talent as well as a complete set of hybrid
             workforce management tools.
@@ -26,7 +27,9 @@ const GetStarted = () => {
               <img src={profile} alt="profile icon" />
               <div className="textContainer">
                 <p>It takes 2 minutes to open an account.</p>
-                <a href="">open account</a>
+                <Link to={"/register"}>
+                  <p>open account</p>
+                </Link>
               </div>
             </div>
           </li>
@@ -35,7 +38,9 @@ const GetStarted = () => {
               <img src={document} alt="document icon" />
               <div className="textContainer">
                 <p>Find talents or search your desire work.</p>
-                <a href="">apply or hire</a>
+                <Link to={"/candidates"}>
+                  <p>apply or hire</p>
+                </Link>
               </div>
             </div>
           </li>
@@ -44,7 +49,9 @@ const GetStarted = () => {
               <img src={edit} alt="edit icon" />
               <div className="textContainer">
                 <p>Get your work done quickly with jobi.</p>
-                <a href="">payment method</a>
+                <Link to={"/pricing"}>
+                  <p>payment method</p>
+                </Link>
               </div>
             </div>
           </li>

@@ -6,9 +6,9 @@ const Header = () => {
     <header>
       <TopNav />
       <div className="wrapper">
-        <h2>
+        <h1>
           Find & Hire Experts<span>for any job.</span>
-        </h2>
+        </h1>
         <p>
           Unlock your potential with quality jobs & earn from world leading
           brands.

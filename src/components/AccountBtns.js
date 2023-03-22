@@ -1,8 +1,14 @@
-const AccountBtns = ({ seekerText, mgrText }) => {
+import { Link } from "react-router-dom";
+
+const AccountBtns = ({ candidateText, employerText }) => {
   return (
     <div className="accountBtns">
-      <button className="seekerBtn">{seekerText}</button>
-      <button className="mgrBtn">{mgrText}</button>
+      <Link to={"/register"}>
+        <button className="candidateBtn">{candidateText}</button>
+      </Link>
+      <Link to={"/post"}>
+        <button className="employerBtn">{employerText}</button>
+      </Link>
     </div>
   );
 };

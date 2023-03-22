@@ -1,30 +1,49 @@
-import logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 import AccountBtns from "./AccountBtns";
+import Logo from "./Logo";
 
 const TopNav = () => {
   return (
     <nav className="topNav">
-      <div className="logo">
-        <img src={logo} alt="Jobi Logo" />
-        <h1>jobi</h1>
-      </div>
+      <Logo />
       <ul className="topNavLinks">
-        <li>Home</li>
-        <li>Job</li>
-        <li>Explore</li>
-        <li>Category</li>
+        <li>
+          <Link to={"/"}>Home</Link>
+        </li>
+        <li>
+          <Link to={"/details/666"}>Job</Link>
+        </li>
+        <li>
+          <Link to={"/jobs"}>Explore</Link>
+        </li>
+        <li>
+          <Link to={"/categories"}>Category</Link>
+        </li>
         <li>
           Pages
           <ul className="pagesDropDown">
-            <li>About Us</li>
-            <li>Pricing</li>
-            <li>Error 404</li>
-            <li>Blog</li>
-            <li>Contact Us</li>
+            <li>
+              <Link to={"/about-us"}>About Us</Link>
+            </li>
+            <li>
+              <Link to={"/pricing"}>Pricing</Link>
+            </li>
+            <li>
+              <Link to={"/error"}>Error 404</Link>
+            </li>
+            <li>
+              <Link to={"/blog"}>Blog</Link>
+            </li>
+            <li>
+              <Link to={"/contact"}>Contact Us</Link>
+            </li>
           </ul>
         </li>
       </ul>
-      <AccountBtns seekerText={"Login/Sign up"} mgrText={"Post a job"} />
+      <AccountBtns
+        candidateText={"Login/Sign up"}
+        employerText={"Post a job"}
+      />
     </nav>
   );
 };
