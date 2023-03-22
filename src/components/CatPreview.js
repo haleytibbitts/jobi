@@ -2,17 +2,16 @@ import { AiOutlineBank } from "react-icons/ai";
 import { BiSlider } from "react-icons/bi";
 import { BsVectorPen, BsBag, BsTelephone } from "react-icons/bs";
 import { HiCode } from "react-icons/hi";
+import SectionHeader from "./SectionHeader";
 
 const CatPreview = () => {
   return (
     <section className="catPreview">
       <div className="wrapper">
-        <div className="flexContainer">
-          <h3>Most Demanding Categories.</h3>
-          <p>
-            <a href="">{`Explore all fields >`}</a>
-          </p>
-        </div>
+        <SectionHeader
+          headerText="Most Demanding Categories."
+          linkText="Explore all fields"
+        />
         <ul className="categories">
           <li>
             <BsVectorPen />

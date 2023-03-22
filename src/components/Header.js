@@ -2,7 +2,6 @@ import TopNav from "./TopNav";
 import categories from "../utilities/categories.json";
 
 const Header = () => {
-  console.log(categories[0]);
   return (
     <header>
       <TopNav />

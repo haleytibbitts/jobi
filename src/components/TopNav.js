@@ -6,7 +6,7 @@ const TopNav = () => {
     <nav className="topNav">
       <div className="logo">
         <img src={logo} alt="Jobi Logo" />
-        <h1>Jobi</h1>
+        <h1>jobi</h1>
       </div>
       <ul className="topNavLinks">
         <li>Home</li>

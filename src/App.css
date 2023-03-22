@@ -261,4 +261,12 @@ html {
   font-style: normal;
   font-weight: normal;
   src: local("Gordita Regular"), url("../assets/fonts/Gordita-Regular.woff") format("woff");
+}
+.jobs li {
+  width: 200px;
+  height: 250px;
+}
+.jobs li img {
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=App.css.map */
