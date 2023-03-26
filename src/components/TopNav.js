@@ -11,7 +11,7 @@ const TopNav = () => {
           <Link to={"/"}>Home</Link>
         </li>
         <li>
-          <Link to={"/details/666"}>Job</Link>
+          <Link to={"/jobs/47617afd-c5aa-4d3a-a3f3-70e8598aa514"}>Job</Link>
         </li>
         <li>
           <Link to={"/jobs"}>Explore</Link>

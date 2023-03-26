@@ -1,29 +1,40 @@
 import { BsBookmarkDash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const JobListItem = () => {
+const JobListItem = ({ job }) => {
+  const {
+    logo,
+    jobTitle,
+    jobType,
+    datePosted,
+    company,
+    location,
+    jobCategory,
+    id,
+  } = job;
+
   return (
     <li className="job">
-      <Link to={"/details/11"}>
+      <Link to={`/jobs/${id}`}>
         <div className="logoTitle">
-          <img src="" alt="" />
-          <h3>job title</h3>
+          <img src={logo} alt={`The ${company} logo`} />
+          <h3>{jobTitle}</h3>
         </div>
         <div className="typePoster">
-          <p>employment type</p>
-          <p>*date posted* by *company*</p>
+          <p>{jobType}</p>
+          <p>{`${datePosted} by ${company}`}</p>
         </div>
         <div className="locationCategory">
-          <p>location</p>
-          <p>job category</p>
-        </div>
-        <div className="btns">
-          <button className="saveBtn">
-            <BsBookmarkDash />
-          </button>
-          <button className="applyBtn">APPLY</button>
+          <p>{location}</p>
+          <p>{jobCategory}</p>
         </div>
       </Link>
+      <div className="btns">
+        <button className="saveBtn">
+          <BsBookmarkDash />
+        </button>
+        <button className="applyBtn">APPLY</button>
+      </div>
     </li>
   );
 };

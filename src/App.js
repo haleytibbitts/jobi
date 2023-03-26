@@ -9,16 +9,45 @@ import Footer from "./components/Footer";
 import JobListings from "./components/JobListings";
 import JobDetails from "./components/JobDetails";
 import Error from "./components/Error";
+import { useEffect, useState } from "react";
+import { getDatabase, ref, onValue, push } from "firebase/database";
+import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 function App() {
+  const [jobs, setJobs] = useState([]);
+  const [curJob, setCurJob] = useState({});
+
+  useEffect(() => {
+    try {
+      const database = getDatabase(firebase);
+      const dbRef = ref(database, "allJobs");
+      onValue(dbRef, (response) => {
+        const data = response.val();
+        const newState = [];
+        for (let key in data) {
+          newState.push(data[key]);
+        }
+        setJobs(newState);
+      });
+    } catch (error) {
+      alert(error);
+    }
+  }, []);
+
   return (
     <div>
-      <Header />
+      <Header jobs={jobs} curJob={curJob} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<JobListings />} />
-        <Route path="/jobs/:id" element={<JobDetails />} />
+        <Route path="/" element={<Home jobs={jobs} />} />
+        <Route path="/jobs" element={<JobListings jobs={jobs} />} />
+        <Route
+          path="/jobs/:pageId"
+          element={
+            <JobDetails jobs={jobs} curJob={curJob} setCurJob={setCurJob} />
+          }
+        />
         {/* FUTURE IMPLEMENTATIONS
         <Route path="/about-us" />
         <Route path="/blog" />

@@ -8,13 +8,13 @@ import ClientReviews from "./ClientReviews";
 import BlogPreview from "./BlogPreview";
 import TopBrands from "./TopBrands";
 
-const Home = () => {
+const Home = ({ jobs }) => {
   return (
     <main className="home">
       <Partners />
       <CatPreview />
       <TrendingJobs />
-      <NewJobs />
+      <NewJobs jobs={jobs} />
       <GetStarted />
       <WhyUs />
       <ClientReviews />

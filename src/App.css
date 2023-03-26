@@ -262,11 +262,24 @@ html {
   font-weight: normal;
   src: local("Gordita Regular"), url("../assets/fonts/Gordita-Regular.woff") format("woff");
 }
-.jobs li {
-  width: 200px;
-  height: 250px;
+html {
+  font-size: 125%;
+  font-family: "Gordita Regular", sans-serif;
 }
-.jobs li img {
-  width: 100%;
-  height: 100%;
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1080px;
+}
+
+li {
+  list-style: none;
+}
+
+.logo p,
+.jobHeading,
+.error h1,
+.error h2 {
+  font-family: "EB Garamond", serif;
 }/*# sourceMappingURL=App.css.map */
