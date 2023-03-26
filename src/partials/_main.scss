@@ -1,0 +1,23 @@
+@use "./variables" as *;
+
+html {
+  font-size: 125%;
+  font-family: $sans;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1080px;
+}
+
+li {
+  list-style: none;
+}
+
+.logo p,
+.jobHeading,
+.error h1,
+.error h2 {
+  font-family: $serif;
+}
