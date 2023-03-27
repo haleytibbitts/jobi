@@ -20,7 +20,7 @@
     justify-content: space-around;
     align-items: center;
     p {
-      font-size: $bodyLarge;
+      font-size: $quaternaryTitle;
       margin-top: 0;
     }
   }
@@ -57,7 +57,7 @@
     select {
       background-color: $senary;
       border: none;
-      font-size: $bodyLarge;
+      font-size: $quaternaryTitle;
       padding: 0;
     }
 
@@ -67,7 +67,7 @@
       border-radius: 0 10px 10px 0;
       background-color: $secondary;
       color: $senary;
-      font-size: $bodyLarge;
+      font-size: $quaternaryTitle;
     }
 
     .category {

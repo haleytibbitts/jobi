@@ -19,7 +19,7 @@
       gap: 20px;
 
       h3 {
-        font-size: $bodyLarge;
+        font-size: $quaternaryTitle;
         color: $quaternary;
         width: 30vw;
         max-width: 200px;
@@ -51,7 +51,7 @@
     }
 
     .partTime {
-      color: #af0f0f;
+      color: #0b718a;
     }
     .hourly {
       color: #7a0068;
@@ -67,6 +67,10 @@
       display: inline;
       line-height: 1.3rem;
     }
+
+    .poster {
+      font-size: $bodyLarge;
+    }
   }
   .locationCategory {
     width: 30vw;
@@ -74,6 +78,10 @@
 
     .location {
       color: $quinary;
+    }
+
+    .category {
+      font-size: $bodyLarge;
     }
   }
   .btns {
@@ -103,10 +111,10 @@
 
   .postJob {
     text-align: center;
-    font-size: $bodySmall;
+    font-size: $bodyLarge;
     border: 1px solid $quaternary;
     border-radius: 20px;
-    padding: 10px 25px;
+    padding: 10px 25px 15px 25px;
 
     span {
       display: inline;
