@@ -1,0 +1,121 @@
+@use "./variables" as *;
+
+.listView {
+  padding: 0;
+  .job {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid $senary;
+    border-radius: 10px;
+    padding: 15px 35px;
+    margin-bottom: 15px;
+    width: 100%;
+
+    .logoTitle {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      h3 {
+        font-size: $bodyLarge;
+        color: $quaternary;
+        width: 30vw;
+        max-width: 200px;
+        line-height: 1.3rem;
+      }
+
+      .imgContainer {
+        height: 50px;
+        width: 50px;
+      }
+
+      img {
+        border-radius: 10px;
+      }
+    }
+
+    p,
+    button {
+      font-size: $bodySmall;
+    }
+  }
+
+  .typePoster {
+    width: 30vw;
+    max-width: 200px;
+
+    .fullTime {
+      color: $secondary;
+    }
+
+    .partTime {
+      color: #af0f0f;
+    }
+    .hourly {
+      color: #7a0068;
+    }
+    .fixed {
+      color: #0c1082;
+    }
+    p {
+      color: $quinary;
+    }
+    span {
+      color: $quaternary;
+      display: inline;
+      line-height: 1.3rem;
+    }
+  }
+  .locationCategory {
+    width: 30vw;
+    max-width: 200px;
+
+    .location {
+      color: $quinary;
+    }
+  }
+  .btns {
+    .saveBtn {
+      color: #d6d6d6;
+      background-color: transparent;
+      border: 1px solid #d6d6d6;
+      padding: 8px 10px;
+      border-radius: 50%;
+    }
+
+    .applyBtn {
+      font-family: $sans;
+      background-color: $secondary;
+      color: $senary;
+      border: none;
+      padding: 7px 15px 9px 15px;
+      border-radius: 15px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+
+  .postJob {
+    text-align: center;
+    font-size: $bodySmall;
+    border: 1px solid $quaternary;
+    border-radius: 20px;
+    padding: 10px 25px;
+
+    span {
+      display: inline;
+      color: $secondary;
+    }
+
+    a {
+      color: $secondary;
+      text-decoration: underline;
+    }
+  }
+}

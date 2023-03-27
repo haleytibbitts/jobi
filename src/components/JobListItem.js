@@ -17,18 +17,36 @@ const JobListItem = ({ job }) => {
     <li className="job">
       <Link to={`/jobs/${id}`}>
         <div className="logoTitle">
-          <img src={logo} alt={`The ${company} logo`} />
+          <div className="imgContainer">
+            <img src={logo} alt={`The ${company} logo`} />
+          </div>
           <h3>{jobTitle}</h3>
         </div>
-        <div className="typePoster">
-          <p>{jobType}</p>
-          <p>{`${datePosted} by ${company}`}</p>
-        </div>
-        <div className="locationCategory">
-          <p>{location}</p>
-          <p>{jobCategory}</p>
-        </div>
       </Link>
+      <div className="typePoster">
+        <p
+          className={
+            jobType === "Fulltime"
+              ? "fullTime"
+              : jobType === "Part Time"
+              ? "partTime"
+              : jobType === "Hourly-Contract"
+              ? "hourly"
+              : "fixed"
+          }
+        >
+          {jobType}
+        </p>
+        <p className="poster">
+          {`${datePosted} by `}
+          <span>{company}</span>
+        </p>
+      </div>
+      <div className="locationCategory">
+        <p className="location">{location}</p>
+        <p className="category">{jobCategory}</p>
+      </div>
+
       <div className="btns">
         <button className="saveBtn">
           <BsBookmarkDash />

@@ -1,4 +1,4 @@
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsListUl } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import categories from "../utilities/categories.json";
 import JobListItem from "./JobListItem";
@@ -128,14 +128,14 @@ const JobListings = ({ jobs }) => {
           </div>
         </form>
       </div>
-      <div className="listings">
+      <ul className="listView">
         {jobs
           .slice(0)
           .reverse()
           .map((job) => {
             return <JobListItem job={job} />;
           })}
-      </div>
+      </ul>
     </main>
   );
 };

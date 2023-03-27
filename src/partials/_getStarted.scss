@@ -1,0 +1,9 @@
+@use "./variables" as *;
+
+.getStarted {
+  margin-top: 100px;
+  background-image: url("../assets/getStarted.jpg");
+  background-size: 125%;
+  background-position: 100% 41%;
+  height: 68vh;
+}
