@@ -1,18 +1,43 @@
-import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
+import {
+  BsArrowLeft,
+  BsArrowRight,
+  BsArrowLeftShort,
+  BsArrowRightShort,
+} from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const TrendingJobs = () => {
+  const [activeLeft, setActiveLeft] = useState(false);
+  const [activeRight, setActiveRight] = useState(false);
+
+  const handleActiveLeft = () => {
+    setActiveLeft(!activeLeft);
+  };
+
+  const handleActiveRight = () => {
+    setActiveRight(!activeRight);
+  };
+
   return (
     <section className="trendingJobs">
       <div className="wrapper">
         <div className="sectionHeader">
           <h2>Trending Jobs</h2>
           <div className="btns">
-            <button className="prevBtn">
-              <BsArrowLeftShort />
+            <button
+              className={activeLeft ? "active" : "inactive"}
+              onPointerEnter={handleActiveLeft}
+              onPointerLeave={handleActiveLeft}
+            >
+              {activeLeft ? <BsArrowLeft /> : <BsArrowLeftShort />}
             </button>
-            <button className="nextBtn">
-              <BsArrowRightShort />
+            <button
+              className={activeRight ? "active" : "inactive"}
+              onPointerEnter={handleActiveRight}
+              onPointerLeave={handleActiveRight}
+            >
+              {activeRight ? <BsArrowRight /> : <BsArrowRightShort />}
             </button>
           </div>
         </div>

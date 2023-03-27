@@ -1,0 +1,141 @@
+@use "./variables" as *;
+
+.homeHeader,
+.jobsHeader {
+  background-image: url("../assets/header1.jpg");
+  background-size: cover;
+  background-position: center;
+  color: $senary;
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $quaternary, $alpha: 0.5);
+  }
+
+  .wrapper {
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      font-size: $bodyLarge;
+      margin-top: 0;
+    }
+  }
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    display: flex;
+    background-color: $senary;
+    border-radius: 10px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px 0 25px;
+      margin: 15px 0 15px 0;
+    }
+
+    label {
+      color: $quinary;
+      font-size: $bodySmall;
+      padding: 0 0 10px 0;
+    }
+
+    input {
+      width: 20vw;
+    }
+
+    input,
+    select {
+      background-color: $senary;
+      border: none;
+      font-size: $bodyLarge;
+      padding: 0;
+    }
+
+    button {
+      width: 150px;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      background-color: $secondary;
+      color: $senary;
+      font-size: $bodyLarge;
+    }
+
+    .category {
+      border-left: 1px solid #e3e3e3;
+    }
+  }
+}
+
+.homeHeader {
+  height: 85vh;
+
+  .wrapper p {
+    margin-bottom: 60px;
+  }
+
+  .headerStats {
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%;
+    padding: 0;
+
+    li {
+      font-size: $tertiaryTitle;
+      text-align: center;
+      padding: 10px;
+
+      span {
+        font-size: $bodyLarge;
+        padding-top: 15px;
+      }
+    }
+  }
+}
+
+.jobsHeader {
+  form,
+  .postingLinks {
+    margin-top: 30px;
+    margin-bottom: 100px;
+  }
+
+  .postingLinks {
+    button {
+      font-size: $bodySmall;
+      font-family: $sans;
+      color: $senary;
+      background-color: rgba($color: $quinary, $alpha: 0.6);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 0 5px;
+
+      svg {
+        position: relative;
+        top: 1px;
+        right: 3px;
+      }
+    }
+  }
+
+  .jobSubHeading {
+    order: -1;
+    margin-bottom: 0;
+    color: $quinary;
+
+    span {
+      display: inline;
+      color: $senary;
+    }
+  }
+}
