@@ -4,8 +4,8 @@
   margin-top: 100px;
   background-image: url("../assets/getStarted.jpg");
   background-size: 125%;
-  background-position: 100% 41%;
-  height: 625px;
+  background-position: 100% 34%;
+  height: 700px;
   position: relative;
 
   .overlay {
@@ -43,7 +43,7 @@
     }
 
     p {
-      font-size: $bodyLarge;
+      font-size: $quaternaryTitle;
       color: $senary;
       line-height: 1.5rem;
     }
@@ -70,6 +70,9 @@
       border-radius: 10px;
 
       .textContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 65%;
         font-size: $quaternaryTitle;
 

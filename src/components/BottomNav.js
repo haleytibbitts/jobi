@@ -4,11 +4,11 @@ const BottomNav = () => {
   return (
     <nav className="btmNav">
       <div className="wrapper">
-        <ul>
+        <ul className="outer">
           <li>
             <Logo />
           </li>
-          <li>
+          <li className="links">
             <h2>Links</h2>
             <ul>
               <li>Pricing</li>
@@ -37,7 +37,7 @@ const BottomNav = () => {
               <li>Cookie policy</li>
             </ul>
           </li>
-          <li>
+          <li className="newsletter">
             <h2>Newsletter</h2>
             <p>Join & get important new regularly</p>
             <form>

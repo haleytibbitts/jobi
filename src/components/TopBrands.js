@@ -1,13 +1,17 @@
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import circles from "../assets/circles.svg";
 
 const TopBrands = () => {
   return (
     <section className="topBrands">
       <div className="wrapper">
         <div className="imgContainer">
-          <img src="" alt="" />
+          <img
+            src={circles}
+            alt="A graphic containing the logos of top brands that source talent through Jobi including Google, Slack, Facebook Messenger, Instagram, and Google Drive."
+          />
           <Logo />
         </div>
         <div className="textContainer">
@@ -22,9 +26,7 @@ const TopBrands = () => {
             future of work, have a look.
           </p>
           <Link to={"/companies"}>
-            <p>
-              Learn More <BsArrowRight />
-            </p>
+            Learn More <BsArrowRight />
           </Link>
         </div>
       </div>

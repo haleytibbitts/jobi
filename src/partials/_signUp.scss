@@ -1,0 +1,43 @@
+@use "./variables" as *;
+
+.signUp {
+  background-image: url("../assets/signUp.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+
+  .wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    color: $senary;
+
+    h2 {
+      flex: 1.5 1.5 0;
+      font-size: $secondaryTitle;
+      line-height: 3.5rem;
+    }
+
+    .textContainer {
+      flex: 1 1 0;
+    }
+
+    p {
+      line-height: 1.5rem;
+    }
+
+    button {
+      margin-left: 0;
+      margin-right: 15px;
+      border-radius: 5px;
+      font-size: $bodySmall;
+      letter-spacing: 0.03rem;
+    }
+
+    .accountBtns {
+      margin-top: 40px;
+    }
+  }
+}
