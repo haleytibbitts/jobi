@@ -11,7 +11,7 @@ const NewJobs = ({ jobs }) => {
             <p>{`Explore all jobs >`}</p>
           </Link>
         </div>
-        <ul className="jobs">
+        <ul className="listView">
           {jobs
             .slice(0)
             .reverse()
@@ -21,10 +21,13 @@ const NewJobs = ({ jobs }) => {
               }
             })}
         </ul>
-        <p className="postJob">
-          Do you want to post a job for your company? <span>We can help. </span>
-          <Link to={"/post"}>Click here</Link>
-        </p>
+        <div className="flexContainer">
+          <p className="postJob">
+            Do you want to post a job for your company?{" "}
+            <span>We can help. </span>
+            <Link to={"/post"}>Click here</Link>
+          </p>
+        </div>
       </div>
     </section>
   );

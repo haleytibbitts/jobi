@@ -1,90 +1,214 @@
 import TopNav from "./TopNav";
 import categories from "../utilities/categories.json";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
-import { BiLinkAlt } from "react-icons/bi";
+import { BiChevronDown, BiChevronUp, BiLinkAlt } from "react-icons/bi";
+import { useEffect, useState } from "react";
 
-const Header = ({ curJob }) => {
+const Header = ({
+  curJob,
+  jobs,
+  setFilteredJobs,
+  isDropDown,
+  setIsDropDown,
+  handleDropDown,
+}) => {
   const pathName = useLocation().pathname;
 
-  const { id, jobTitle, datePosted, company } = curJob;
+  const { id, jobTitle, datePosted, company, facebook, twitter } = curJob;
+
+  const [selectValue, setSelectValue] = useState("");
+  const [keywordValue, setKeywordValue] = useState("");
+
+  const handleSelectValue = (e) => {
+    setSelectValue(e.target.innerText);
+  };
+
+  const handleKeywordValue = (e) => {
+    setKeywordValue(e.target.value);
+  };
+  const navigate = useNavigate();
+
+  const getJobs = () => {
+    const jobArray = jobs.filter((job) => {
+      if (
+        selectValue === "Any" &&
+        (job.company.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.jobTitle.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.overview.toLowerCase().includes(keywordValue.toLowerCase()))
+      ) {
+        return job;
+      } else if (
+        job.jobCategory === selectValue &&
+        (job.company.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.jobTitle.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.overview.toLowerCase().includes(keywordValue.toLowerCase()))
+      ) {
+        return job;
+      }
+    });
+
+    setFilteredJobs(jobArray);
+    setIsDropDown(false);
+    setKeywordValue("");
+    setSelectValue("");
+    navigate("/jobs");
+  };
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    console.log(window.location);
+    alert(
+      `The ${jobTitle} job at ${company} has been saved to your clipboard!`
+    );
+  };
 
   return (
-    <header>
-      <TopNav />
-      {pathName === "/" ||
-      pathName === "/jobs" ||
-      pathName === `/jobs/${id}` ? (
-        <div className="wrapper">
-          {pathName === "/" ? (
-            <>
-              <h1>
-                Find & Hire Experts<span>for any job.</span>
-              </h1>
-              <p>
-                Unlock your potential with quality jobs & earn from world
-                leading brands.
-              </p>
-            </>
-          ) : pathName === "/jobs" ? (
-            <>
-              <h1>Job Listings</h1>
-              <p>We deliver blazing fast & string work solutions.</p>
-            </>
-          ) : (
-            <>
-              <h1 className="jobHeading">{jobTitle}</h1>
-              <p className="jobSubHeading">
-                {datePosted} by {company}
-              </p>
-            </>
-          )}
-          {pathName === `/jobs/${id}` ? (
-            <div className="links">
-              <button className="facebook">
-                <FaFacebookF /> Facebook
-              </button>
-              <button className="twitter">
-                <FaTwitter /> Twitter
-              </button>
-              <button className="copyLink">
-                <BiLinkAlt /> Copy
-              </button>
+    <header
+      className={
+        pathName === "/"
+          ? "homeHeader"
+          : pathName === "/jobs" || pathName === `/jobs/${id}`
+          ? "jobsHeader"
+          : "errorHeader"
+      }
+    >
+      <div
+        className={
+          pathName === "/" || pathName === "/jobs" || pathName === `/jobs/${id}`
+            ? "overlay"
+            : "noOverlay"
+        }
+      >
+        <TopNav />
+        {pathName === "/" ||
+        pathName === "/jobs" ||
+        pathName === `/jobs/${id}` ? (
+          <div className="wrapper">
+            <div className="textContainer">
+              {pathName === "/" ? (
+                <>
+                  <h1>
+                    Find & Hire Experts<span>for any job.</span>
+                  </h1>
+                  <p>
+                    Unlock your potential with quality jobs & earn from world
+                    leading brands.
+                  </p>
+                </>
+              ) : pathName === "/jobs" ? (
+                <>
+                  <h1>Job Listings</h1>
+                  <p>We deliver blazing fast & string work solutions.</p>
+                </>
+              ) : (
+                <>
+                  <h1 className="jobHeading">{jobTitle}</h1>
+                  <p className="jobSubHeading">
+                    {datePosted} by <span>{company}</span>
+                  </p>
+                </>
+              )}
+              {pathName === `/jobs/${id}` ? (
+                <div className="postingLinks">
+                  <button className="facebook">
+                    <a href={facebook} target="_blank" rel="noreferrer">
+                      <FaFacebookF /> Facebook
+                    </a>
+                  </button>
+                  <button className="twitter">
+                    <a href={twitter} target="_blank" rel="noreferrer">
+                      <FaTwitter /> Twitter
+                    </a>
+                  </button>
+                  <button className="copyLink" onClick={copyLink}>
+                    <BiLinkAlt /> Copy
+                  </button>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    getJobs();
+                  }}
+                >
+                  <div className="keyword">
+                    <label htmlFor="keywordInput">
+                      Your job title, keyword or company?
+                    </label>
+                    <input
+                      type="text"
+                      id="keywordInput"
+                      placeholder="Google"
+                      onChange={handleKeywordValue}
+                    />
+                  </div>
+                  <div className="category">
+                    <label htmlFor="categorySelect">Category</label>
+                    <p className="placeholder" onClick={handleDropDown}>
+                      {selectValue ? selectValue : "Select:"}
+                      {isDropDown ? <BiChevronUp /> : <BiChevronDown />}
+                    </p>
+                    {isDropDown ? (
+                      <ul
+                        className="select"
+                        name="categorySelect"
+                        id="categorySelect"
+                      >
+                        <li
+                          className="dropDown"
+                          onClick={(e) => {
+                            handleSelectValue(e);
+                            handleDropDown(e);
+                          }}
+                        >
+                          Any
+                        </li>
+                        {categories.map((category) => {
+                          return (
+                            <li
+                              key={category}
+                              className="dropDown"
+                              onClick={(e) => {
+                                handleSelectValue(e);
+                                handleDropDown();
+                              }}
+                            >
+                              {category}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : undefined}
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      getJobs();
+                    }}
+                    on
+                  >
+                    Search
+                  </button>
+                </form>
+              )}
             </div>
-          ) : (
-            <form>
-              <label htmlFor="keywordInput">
-                Your job title, keyword or company?
-              </label>
-              <input type="text" id="keywordInput" />
-              <label htmlFor="categorySelect">Category</label>
-              <select name="categorySelect" id="categorySelect">
-                {categories.map((category) => {
-                  return (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  );
-                })}
-              </select>
-              <button>Search</button>
-            </form>
-          )}
-          {pathName === "/" ? (
-            <ul className="headerStats">
-              <li>
-                30k+<span>Worldwide Clients</span>
-              </li>
-              <li>
-                3%<span>Top Talents</span>
-              </li>
-              <li>
-                12mil<span>Dollar Payout</span>
-              </li>
-            </ul>
-          ) : undefined}
-        </div>
-      ) : undefined}
+            {pathName === "/" ? (
+              <ul className="headerStats">
+                <li>
+                  30k+<span>Worldwide Clients</span>
+                </li>
+                <li>
+                  3%<span>Top Talents</span>
+                </li>
+                <li>
+                  12mil<span>Dollar Payout</span>
+                </li>
+              </ul>
+            ) : undefined}
+          </div>
+        ) : undefined}
+      </div>
     </header>
   );
 };

@@ -1,0 +1,175 @@
+@use "./variables" as *;
+
+.jobListings {
+  padding-bottom: 100px;
+}
+.filter {
+  background-color: $tertiary;
+  padding: 8px 30px 30px 30px;
+  border-radius: 20px;
+  margin: 80px 0 60px 0;
+
+  h2 {
+    font-size: $quaternaryTitle;
+  }
+
+  .heading {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e0e8e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      background-color: $senary;
+      border: 1px solid #e0e8e5;
+      padding: 5px 10px;
+      border-radius: 50%;
+    }
+  }
+
+  .rowOne label,
+  legend,
+  svg {
+    font-size: $bodyLarge;
+  }
+
+  .rowOne {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+
+    .keyword {
+      flex: 1.25 1.25 0;
+      position: relative;
+
+      svg {
+        color: $quinary;
+        position: absolute;
+        top: 38px;
+        right: 12px;
+      }
+    }
+
+    div {
+      flex: 1 1 0;
+    }
+
+    input,
+    select {
+      width: 100%;
+      background-color: $senary;
+      border: 1px solid #e0e8e5;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin-top: 5px;
+
+      &::placeholder {
+        font-family: $sans;
+      }
+    }
+  }
+
+  .rowTwo label,
+  input,
+  select {
+    font-size: $bodySmall;
+  }
+
+  .rowTwo {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+
+    div {
+      display: flex;
+
+      ul {
+        margin: 0;
+        padding-left: 10px;
+
+        li {
+          display: flex;
+          align-items: flex-start;
+          gap: 5px;
+          padding-bottom: 20px;
+        }
+      }
+
+      ul {
+        position: relative;
+        top: 3px;
+      }
+    }
+
+    .type {
+      flex: 1 1 0;
+    }
+
+    .experience {
+      flex: 1.25 1.25 0;
+    }
+
+    .range {
+      flex: 1.25 1.25 0;
+      gap: 10px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 2 2 0;
+        position: relative;
+        top: 3px;
+      }
+
+      legend {
+        flex: 1 1 0;
+      }
+
+      input {
+        padding-top: 10px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.resultsInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $bodySmall;
+
+  p {
+    color: $quinary;
+    margin: 0;
+    span {
+      display: inline;
+      color: $quaternary;
+    }
+  }
+
+  .sort {
+    label,
+    select {
+      margin-right: 10px;
+    }
+
+    select {
+      padding: 3px 8px;
+      border: 1px solid #e0e8e5;
+      border-radius: 10px;
+      background-color: transparent;
+    }
+
+    button {
+      background-color: transparent;
+      border: 1px solid #e0e8e5;
+      border-radius: 50%;
+      padding: 8px 10px 6px 10px;
+    }
+  }
+}

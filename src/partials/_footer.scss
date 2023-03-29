@@ -1,0 +1,46 @@
+@use "./variables" as *;
+
+footer {
+  background-color: $primary;
+  font-size: $bodySmall;
+  color: $tertiary;
+  padding: 20px 0 50px 0;
+
+  a {
+    color: $tertiary;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex: 1 1 0;
+    color: #9aa4a1;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footerLinks {
+    flex: 1 1 0;
+    display: flex;
+    gap: 20px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 1 1 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+
+    li {
+      font-size: $quaternaryTitle;
+    }
+  }
+}

@@ -1,26 +1,29 @@
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 
-const Testimonial = () => {
+const Testimonial = ({ headline, review, name, location, img }) => {
   return (
     <li>
-      <div className="title">
-        <h3>Impressive!</h3>
-        <div className="rating">
-          <BsStarFill />
-          <BsStarFill />
-          <BsStarFill />
-          <BsStarHalf />
-          <BsStar />
+      <div className="flexContainer">
+        <div className="title">
+          <h3>{headline}</h3>
+          <div className="rating">
+            <BsStarFill />
+            <BsStarFill />
+            <BsStarFill />
+            <BsStarFill />
+            <BsStarFill />
+          </div>
         </div>
+        <p>{review}</p>
       </div>
-      <p>One of the best place that I found experts. Highly recommended!</p>
       <div className="clientInfo">
         <div className="textContainer">
-          <p className="name">Rashed Ka, </p>
-          <p className="location">Dhaka</p>
+          <p className="name">
+            {name}, <span>{location}</span>
+          </p>
         </div>
         <div className="imgContainer">
-          <img src="" alt="" />
+          <img src={img} alt="Headshot of the reviewer" />
         </div>
       </div>
     </li>
