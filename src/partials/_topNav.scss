@@ -12,6 +12,12 @@
   li {
     color: $senary;
     font-size: $bodyLarge;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $secondary;
+    }
   }
 
   .links {
@@ -52,6 +58,23 @@
 
     li {
       padding: 15px 20px;
+
+      &:hover,
+      &:focus-visible {
+        background-color: $senary;
+
+        a {
+          color: $secondary;
+        }
+      }
+
+      &:nth-of-type(1) {
+        border-radius: 10px 10px 0 0;
+      }
+
+      &:nth-of-type(5) {
+        border-radius: 0 0 10px 10px;
+      }
     }
   }
 }
@@ -62,10 +85,31 @@
     a,
     button {
       color: $quaternary;
+
+      &:hover {
+        color: $quinary;
+      }
     }
 
     .candidateBtn {
       border-color: $quaternary;
+
+      &:hover,
+      &:focus-visible {
+        background-color: $secondary;
+        border-color: $secondary;
+
+        a {
+          color: $senary;
+        }
+      }
+    }
+
+    .employerBtn {
+      &:hover,
+      &:focus-visible {
+        border-color: $secondary;
+      }
     }
   }
 }

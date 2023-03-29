@@ -1,13 +1,67 @@
 import TopNav from "./TopNav";
 import categories from "../utilities/categories.json";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
-import { BiLinkAlt } from "react-icons/bi";
+import { BiChevronDown, BiChevronUp, BiLinkAlt } from "react-icons/bi";
+import { useEffect, useState } from "react";
 
-const Header = ({ curJob }) => {
+const Header = ({
+  curJob,
+  jobs,
+  setFilteredJobs,
+  isDropDown,
+  setIsDropDown,
+  handleDropDown,
+}) => {
   const pathName = useLocation().pathname;
 
-  const { id, jobTitle, datePosted, company } = curJob;
+  const { id, jobTitle, datePosted, company, facebook, twitter } = curJob;
+
+  const [selectValue, setSelectValue] = useState("");
+  const [keywordValue, setKeywordValue] = useState("");
+
+  const handleSelectValue = (e) => {
+    setSelectValue(e.target.innerText);
+  };
+
+  const handleKeywordValue = (e) => {
+    setKeywordValue(e.target.value);
+  };
+  const navigate = useNavigate();
+
+  const getJobs = () => {
+    const jobArray = jobs.filter((job) => {
+      if (
+        selectValue === "Any" &&
+        (job.company.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.jobTitle.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.overview.toLowerCase().includes(keywordValue.toLowerCase()))
+      ) {
+        return job;
+      } else if (
+        job.jobCategory === selectValue &&
+        (job.company.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.jobTitle.toLowerCase().includes(keywordValue.toLowerCase()) ||
+          job.overview.toLowerCase().includes(keywordValue.toLowerCase()))
+      ) {
+        return job;
+      }
+    });
+
+    setFilteredJobs(jobArray);
+    setIsDropDown(false);
+    setKeywordValue("");
+    setSelectValue("");
+    navigate("/jobs");
+  };
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    console.log(window.location);
+    alert(
+      `The ${jobTitle} job at ${company} has been saved to your clipboard!`
+    );
+  };
 
   return (
     <header
@@ -19,7 +73,13 @@ const Header = ({ curJob }) => {
           : "errorHeader"
       }
     >
-      <div className="overlay">
+      <div
+        className={
+          pathName === "/" || pathName === "/jobs" || pathName === `/jobs/${id}`
+            ? "overlay"
+            : "noOverlay"
+        }
+      >
         <TopNav />
         {pathName === "/" ||
         pathName === "/jobs" ||
@@ -52,39 +112,84 @@ const Header = ({ curJob }) => {
               {pathName === `/jobs/${id}` ? (
                 <div className="postingLinks">
                   <button className="facebook">
-                    <FaFacebookF /> Facebook
+                    <a href={facebook} target="_blank" rel="noreferrer">
+                      <FaFacebookF /> Facebook
+                    </a>
                   </button>
                   <button className="twitter">
-                    <FaTwitter /> Twitter
+                    <a href={twitter} target="_blank" rel="noreferrer">
+                      <FaTwitter /> Twitter
+                    </a>
                   </button>
-                  <button className="copyLink">
+                  <button className="copyLink" onClick={copyLink}>
                     <BiLinkAlt /> Copy
                   </button>
                 </div>
               ) : (
-                <form>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    getJobs();
+                  }}
+                >
                   <div className="keyword">
                     <label htmlFor="keywordInput">
                       Your job title, keyword or company?
                     </label>
-                    <input type="text" id="keywordInput" placeholder="Google" />
+                    <input
+                      type="text"
+                      id="keywordInput"
+                      placeholder="Google"
+                      onChange={handleKeywordValue}
+                    />
                   </div>
                   <div className="category">
                     <label htmlFor="categorySelect">Category</label>
-                    <select name="categorySelect" id="categorySelect">
-                      <option value="" className="placeholder">
-                        Select:
-                      </option>
-                      {categories.map((category) => {
-                        return (
-                          <option key={category} value={category}>
-                            {category}
-                          </option>
-                        );
-                      })}
-                    </select>
+                    <p className="placeholder" onClick={handleDropDown}>
+                      {selectValue ? selectValue : "Select:"}
+                      {isDropDown ? <BiChevronUp /> : <BiChevronDown />}
+                    </p>
+                    {isDropDown ? (
+                      <ul
+                        className="select"
+                        name="categorySelect"
+                        id="categorySelect"
+                      >
+                        <li
+                          className="dropDown"
+                          onClick={(e) => {
+                            handleSelectValue(e);
+                            handleDropDown(e);
+                          }}
+                        >
+                          Any
+                        </li>
+                        {categories.map((category) => {
+                          return (
+                            <li
+                              key={category}
+                              className="dropDown"
+                              onClick={(e) => {
+                                handleSelectValue(e);
+                                handleDropDown();
+                              }}
+                            >
+                              {category}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    ) : undefined}
                   </div>
-                  <button>Search</button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      getJobs();
+                    }}
+                    on
+                  >
+                    Search
+                  </button>
                 </form>
               )}
             </div>

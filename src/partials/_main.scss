@@ -85,9 +85,30 @@ h1 {
     }
   }
 
+  .candidateBtn {
+    &:hover,
+    &:focus-visible {
+      border-color: $secondary;
+
+      a {
+        color: $secondary;
+      }
+    }
+  }
+
   .employerBtn {
     border-color: $secondary;
     background-color: $secondary;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $senary;
+      border-color: $senary;
+
+      a {
+        color: $secondary;
+      }
+    }
   }
 }
 
@@ -133,6 +154,13 @@ h1 {
     padding-bottom: 5px;
     border-bottom: 1px solid $secondary;
     margin: 0;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $quinary;
+      border-bottom: 4px solid $quinary;
+    }
   }
 
   button {
@@ -142,6 +170,7 @@ h1 {
     padding: 10px 12px;
     margin-left: 5px;
     cursor: pointer;
+    transition: 0.3s all ease-in-out;
   }
 
   .active {
@@ -181,5 +210,49 @@ h1 {
 
   .textContainer {
     flex: 1 1 0;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  color: $secondary;
+  padding: 0;
+  gap: 5px;
+  margin-top: 80px;
+
+  .paginationItem {
+    cursor: pointer;
+    padding: 5px 13px;
+  }
+
+  .selected {
+    color: $tertiary;
+    background-color: $secondary;
+    padding: 5px 13px;
+    border-radius: 10px;
+  }
+
+  .disabled {
+    visibility: hidden;
+  }
+}
+
+.select {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 150px;
+  background-color: $senary;
+  color: $quinary;
+  overflow-y: scroll;
+  padding: 0 20px;
+  margin: 0;
+
+  li {
+    cursor: pointer;
   }
 }

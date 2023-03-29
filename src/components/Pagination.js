@@ -1,0 +1,80 @@
+import usePagination from "../utilities/usePagination";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+
+const Pagination = ({
+  onPageChange,
+  totalCount,
+  siblingCount = 1,
+  currentPage,
+  pageSize,
+}) => {
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize,
+  });
+
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
+  }
+
+  const onNext = () => {
+    onPageChange(currentPage + 1);
+  };
+
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
+  };
+
+  let lastPage = paginationRange[paginationRange.length - 1];
+
+  return (
+    <ul className="paginationContainer">
+      {/* Left navigation arrow */}
+      <li
+        className={currentPage === 1 ? "disabled" : "paginationItem"}
+        onClick={onPrevious}
+      >
+        <BsArrowLeft />
+      </li>
+      {paginationRange.map((pageNumber) => {
+        // If the pageItem is a DOT, render the DOTS unicode character
+        if (pageNumber === "...") {
+          return <li className="paginationItem dots">...</li>;
+        } else if (pageNumber === lastPage) {
+          return (
+            <li
+              className={
+                pageNumber === currentPage ? "selected" : "paginationItem"
+              }
+              onClick={() => onPageChange(pageNumber)}
+            >
+              Last
+            </li>
+          );
+        }
+        // Render our Page Pills
+        return (
+          <li
+            className={
+              pageNumber === currentPage ? "selected" : "paginationItem"
+            }
+            onClick={() => onPageChange(pageNumber)}
+          >
+            {pageNumber}
+          </li>
+        );
+      })}
+      {/*  Right Navigation arrow */}
+      <li
+        className={currentPage === lastPage ? "disabled" : "paginationItem"}
+        onClick={onNext}
+      >
+        <BsArrowRight />
+      </li>
+    </ul>
+  );
+};
+
+export default Pagination;

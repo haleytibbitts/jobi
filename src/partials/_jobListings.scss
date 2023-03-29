@@ -12,6 +12,13 @@
     padding: 15px 35px;
     margin-bottom: 15px;
     width: 100%;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      border-radius: 30px;
+      border: 2px solid $quinary;
+    }
 
     .logoTitle {
       display: flex;
@@ -124,6 +131,18 @@
     a {
       color: $secondary;
       text-decoration: underline;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        color: $quinary;
+      }
     }
   }
+}
+
+.oops {
+  color: $quinary;
+  text-align: center;
+  margin-top: 100px;
 }

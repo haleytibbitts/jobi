@@ -17,6 +17,12 @@ import { v4 as uuid } from "uuid";
 function App() {
   const [jobs, setJobs] = useState([]);
   const [curJob, setCurJob] = useState({});
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [isDropDown, setIsDropDown] = useState(false);
+
+  const handleDropDown = () => {
+    setIsDropDown(!isDropDown);
+  };
 
   useEffect(() => {
     try {
@@ -37,11 +43,29 @@ function App() {
 
   return (
     <div>
-      <Header jobs={jobs} curJob={curJob} />
+      <Header
+        jobs={jobs}
+        curJob={curJob}
+        setFilteredJobs={setFilteredJobs}
+        isDropDown={isDropDown}
+        setIsDropDown={setIsDropDown}
+        handleDropDown={handleDropDown}
+      />
 
       <Routes>
         <Route path="/" element={<Home jobs={jobs} />} />
-        <Route path="/jobs" element={<JobListings jobs={jobs} />} />
+        <Route
+          path="/jobs"
+          element={
+            <JobListings
+              jobs={jobs}
+              filteredJobs={filteredJobs}
+              isDropDown={isDropDown}
+              setIsDropDown={setIsDropDown}
+              handleDropDown={handleDropDown}
+            />
+          }
+        />
         <Route
           path="/jobs/:pageId"
           element={
