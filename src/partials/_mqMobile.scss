@@ -1,0 +1,232 @@
+@use "./variables" as *;
+
+@media (max-width: 769px) {
+  html {
+    font-size: 100%;
+  }
+
+  .wrapper {
+    width: 95%;
+  }
+
+  .topNav {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .links {
+      right: 20px;
+    }
+
+    .topNavLinks,
+    .accountBtns {
+      width: 75%;
+    }
+  }
+
+  .homeHeader {
+    height: 100vh;
+  }
+
+  .homeHeader,
+  .jobsHeader {
+    h1 {
+      font-size: $secondaryTitle;
+      margin: 20px 0;
+    }
+
+    .wrapper p {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      width: 100%;
+
+      .category {
+        .placeholder {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .sectionHeader {
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .trendingJobs {
+    h2 {
+      font-size: $tertiaryTitle;
+    }
+
+    .carousel {
+      width: 240px;
+    }
+  }
+
+  .newJobs {
+    h2 {
+      font-size: $tertiaryTitle;
+    }
+
+    .postJob {
+      line-height: 1.2rem;
+    }
+  }
+
+  .getStarted {
+    margin-top: 25px;
+    background-position: 30%;
+    height: auto;
+
+    .overlay {
+      background: rgba($color: black, $alpha: 0.5);
+    }
+
+    .wrapper {
+      .flexContainer {
+        align-self: center;
+        width: 95%;
+      }
+
+      .steps {
+        flex-direction: column;
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  .whyUs {
+    margin-top: 40px;
+    text-align: center;
+
+    .wrapper {
+      .imgContainer {
+        min-width: 0;
+        min-height: 0;
+        margin-top: 50px;
+      }
+    }
+
+    li {
+      text-align: left;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+
+    h3 {
+      font-size: $tertiaryTitle;
+    }
+
+    h2,
+    h3 {
+      text-align: center;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
+
+  .reviews {
+    .carousel {
+      ul {
+        li {
+          width: 95vw;
+        }
+      }
+    }
+  }
+
+  .blogPreview {
+    h2 {
+      margin-top: 25px;
+    }
+
+    .blogPosts {
+      flex-direction: column;
+      align-items: center;
+
+      li {
+        width: 90%;
+      }
+    }
+  }
+
+  .topBrands {
+    margin-top: 40px;
+    margin-bottom: 60px;
+
+    .wrapper {
+      flex-direction: column;
+      gap: 60px;
+
+      .imgContainer {
+        margin: 0;
+
+        .logo {
+          bottom: 10px;
+          left: 10px;
+        }
+      }
+    }
+  }
+
+  .signUp {
+    height: auto;
+
+    .wrapper {
+      flex-direction: column;
+      text-align: center;
+      gap: 40px;
+
+      h2 {
+        font-size: $tertiaryTitle;
+        margin-bottom: 0;
+        margin-top: 40px;
+        line-height: 2rem;
+      }
+
+      p {
+        margin-top: 0;
+      }
+
+      .accountBtns {
+        margin-bottom: 40px;
+      }
+
+      button {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .btmNav {
+    .outer {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+
+      li {
+        text-align: center;
+      }
+    }
+  }
+
+  .logo {
+    width: auto;
+    gap: 5px;
+  }
+
+  footer {
+    .wrapper {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

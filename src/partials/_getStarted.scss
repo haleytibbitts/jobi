@@ -84,6 +84,12 @@
           color: $secondary;
           text-transform: uppercase;
           font-size: $bodySmall;
+          transition: 0.3s all ease-in-out;
+
+          &:hover,
+          &:focus-visible {
+            color: $quinary;
+          }
         }
       }
     }

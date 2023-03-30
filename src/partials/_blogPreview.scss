@@ -13,6 +13,16 @@
 
     li {
       flex: 1 1 0;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        transform: scale(1.05);
+
+        svg {
+          color: $secondary;
+        }
+      }
 
       p {
         font-size: $bodySmall;
@@ -40,15 +50,30 @@
       svg {
         font-size: $tertiaryTitle;
         margin-top: 10px;
+        transition: 0.3s all ease-in-out;
       }
     }
   }
 
   .imgContainer {
     height: 250px;
+    position: relative;
+
+    &:hover,
+    &:focus-visible {
+      .overlay {
+        display: block;
+      }
+    }
 
     img {
       object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      display: none;
     }
   }
 }

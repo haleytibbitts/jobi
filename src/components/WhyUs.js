@@ -1,10 +1,4 @@
-import {
-  BsChevronDown,
-  BsChevronUp,
-  BsFillCheckCircleFill,
-  BsFillPlusCircleFill,
-} from "react-icons/bs";
-import { BiSearch } from "react-icons/bi";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import candidates from "../assets/candidates.png";
 import { useState } from "react";
@@ -29,7 +23,11 @@ const WhyUs = () => {
           <h3>World of talent at your fingertips</h3>
           <ul className="features">
             <li>
-              <div className="aboveFold" onClick={handleFeature1Open}>
+              <div
+                className="aboveFold"
+                onClick={handleFeature1Open}
+                tabIndex="0"
+              >
                 <h4>Seamless Search</h4>
                 {isFeature1Open ? <BsChevronUp /> : <BsChevronDown />}
               </div>
@@ -44,7 +42,11 @@ const WhyUs = () => {
               </p>
             </li>
             <li>
-              <div className="aboveFold" onClick={handleFeature2Open}>
+              <div
+                className="aboveFold"
+                onClick={handleFeature2Open}
+                tabIndex="0"
+              >
                 <h4>Hire top talents</h4>
                 {isFeature2Open ? <BsChevronUp /> : <BsChevronDown />}
               </div>

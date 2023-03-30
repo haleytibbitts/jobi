@@ -1,0 +1,209 @@
+@use "./variables" as *;
+
+@media (max-width: 1025px) {
+  html {
+    font-size: 110%;
+  }
+  .wrapper {
+    width: 90%;
+  }
+  .topNav {
+    position: relative;
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      transition: 0.3s all ease-in-out;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+
+      svg {
+        font-size: 1.5rem;
+      }
+
+      &:hover,
+      &:focus-visible {
+        transform: rotate(90deg);
+      }
+    }
+
+    .links {
+      flex-direction: column;
+      align-items: flex-end;
+      position: absolute;
+      right: 30px;
+      top: 50px;
+    }
+
+    .topNavLinks {
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 20px;
+      padding: 10px 20px 0 0;
+      background-color: $primary;
+      width: 50%;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .pagesDropDown {
+      left: -86px;
+    }
+
+    .accountBtns {
+      background-color: $primary;
+      width: 50%;
+      padding-bottom: 20px;
+      border-radius: 0 0 20px 20px;
+
+      button {
+        display: block;
+        margin-left: auto;
+        margin-top: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .homeHeader,
+  .jobsHeader {
+    form {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+        border-radius: 0 0 8px 8px;
+        padding: 10px 0;
+        margin-top: 10px;
+      }
+    }
+
+    .headerStats {
+      li {
+        flex: 1 1 0;
+      }
+    }
+  }
+
+  .partners {
+    li {
+      flex: 1 1 0;
+
+      img {
+        width: 80%;
+      }
+    }
+  }
+
+  .catPreview {
+    ul {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+
+  .trendingJobs {
+    .carousel {
+      width: 520px;
+    }
+  }
+
+  .listView {
+    .btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      .applyBtn {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .getStarted {
+    background-size: cover;
+  }
+
+  .whyUs {
+    .wrapper {
+      flex-direction: column;
+      align-items: center;
+
+      ul li {
+        width: 100%;
+      }
+    }
+  }
+
+  .reviews {
+    background-size: cover;
+    .carousel {
+      width: 510px;
+    }
+  }
+
+  .signUp {
+    .accountBtns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  .btmNav {
+    .outer {
+      form {
+        button {
+          position: static;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  .filter {
+    .rowOne {
+      input,
+      select {
+        padding-left: 7px;
+      }
+    }
+  }
+
+  .errorHeader {
+    .topNav {
+      .topNavLinks,
+      .accountBtns {
+        background-color: $tertiary;
+      }
+    }
+  }
+
+  .error {
+    .wrapper {
+      flex-direction: column;
+      height: 85%;
+      gap: 0;
+
+      .imgContainer {
+        width: 50%;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .textContainer {
+        text-align: center;
+
+        button {
+          width: 75%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

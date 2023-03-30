@@ -28,6 +28,12 @@
       font-size: $bodyLarge;
       flex: 1 1 0;
       padding: 10px 0;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        color: $tertiary;
+      }
     }
 
     .links {
@@ -79,6 +85,13 @@
         color: $tertiary;
         font-family: $sans;
         font-size: $bodySmall;
+        cursor: pointer;
+        transition: 0.3s all ease-in-out;
+
+        &:hover,
+        &:focus-visible {
+          background-color: $secondary;
+        }
       }
     }
   }
