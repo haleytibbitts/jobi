@@ -1,0 +1,108 @@
+@use "./variables" as *;
+
+.getStarted {
+  margin-top: 100px;
+  background-image: url("../assets/getStarted.jpg");
+  background-size: 125%;
+  background-position: 100% 34%;
+  height: 700px;
+  position: relative;
+
+  .overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 35%,
+      rgba(0, 0, 0, 0.5032212714187237) 70%,
+      rgba(0, 0, 0, 0.7497198708584997) 100%
+    );
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flexContainer {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    width: 44%;
+    padding-top: 70px;
+
+    svg {
+      font-size: $secondaryTitle;
+      color: $secondary;
+      background: radial-gradient(circle, $senary 65%, $secondary 67%);
+      border-radius: 50%;
+    }
+
+    h2 {
+      color: $senary;
+      font-size: $secondaryTitle;
+      margin: 30px 0 15px 0;
+    }
+
+    p {
+      font-size: $quaternaryTitle;
+      color: $senary;
+      line-height: 1.5rem;
+    }
+
+    span span {
+      display: inline;
+      color: #00bf58;
+    }
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 50px;
+    padding: 0;
+
+    li {
+      display: flex;
+      justify-content: center;
+      background-color: $senary;
+      padding: 20px 10px 10px 10px;
+      gap: 20px;
+      border-radius: 10px;
+
+      .textContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 65%;
+        font-size: $quaternaryTitle;
+
+        p {
+          margin-top: 0;
+        }
+
+        a {
+          color: $secondary;
+          text-transform: uppercase;
+          font-size: $bodySmall;
+          transition: 0.3s all ease-in-out;
+
+          &:hover,
+          &:focus-visible {
+            color: $quinary;
+          }
+        }
+      }
+    }
+  }
+
+  .imgContainer {
+    height: 50px;
+    width: 50px;
+    background-color: $secondary;
+    border-radius: 50%;
+
+    img {
+      padding: 10px 15px;
+    }
+  }
+}

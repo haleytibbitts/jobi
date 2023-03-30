@@ -1,0 +1,283 @@
+@use "./variables" as *;
+
+html {
+  font-size: 125%;
+}
+
+body {
+  font-family: $sans;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1080px;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: black, $alpha: 0.5);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.hamburger {
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+span {
+  display: block;
+}
+
+h1 {
+  font-size: $primaryTitle;
+  text-align: center;
+}
+
+.logo p,
+.error h1,
+.error h2 {
+  font-family: $serif;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 97px;
+
+  div {
+    height: 1.4rem;
+  }
+
+  p {
+    font-size: 1.7rem;
+    letter-spacing: -0.5px;
+    margin: 0;
+    position: relative;
+    bottom: 5px;
+  }
+}
+
+.accountBtns {
+  button {
+    font-family: $sans;
+    background-color: transparent;
+    border: 1px solid $senary;
+    border-radius: 20px;
+    padding: 8px 20px 12px 20px;
+    margin: 0 5px;
+
+    a {
+      color: $senary;
+    }
+  }
+
+  .candidateBtn {
+    &:hover,
+    &:focus-visible {
+      border-color: $secondary;
+
+      a {
+        color: $secondary;
+      }
+    }
+  }
+
+  .employerBtn {
+    border-color: $secondary;
+    background-color: $secondary;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $senary;
+      border-color: $senary;
+
+      a {
+        color: $secondary;
+      }
+    }
+  }
+}
+
+.carousel {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.partners {
+  background-color: $senary;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+
+    li {
+      gap: 30px;
+      padding: 25px 0;
+    }
+  }
+}
+
+.home {
+  h2 {
+    font-size: $secondaryTitle;
+  }
+
+  a {
+    font-size: $bodyLarge;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+
+  p {
+    color: $secondary;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $secondary;
+    margin: 0;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $quinary;
+      border-bottom: 4px solid $quinary;
+    }
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 10px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+  }
+
+  .active {
+    background-color: $secondary;
+    color: $senary;
+  }
+}
+
+.topBrands {
+  margin-top: 100px;
+
+  .wrapper {
+    display: flex;
+    gap: 100px;
+  }
+
+  .imgContainer {
+    position: relative;
+    flex: 1 1 0;
+
+    .logo {
+      position: absolute;
+      top: 0;
+      bottom: 20px;
+      left: 20px;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      flex-direction: column;
+      justify-content: center;
+
+      p {
+        padding-top: 10px;
+      }
+    }
+  }
+
+  .textContainer {
+    flex: 1 1 0;
+  }
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  color: $secondary;
+  padding: 0;
+  gap: 5px;
+  margin-top: 80px;
+
+  .paginationItem {
+    cursor: pointer;
+    padding: 5px 13px;
+  }
+
+  .selected {
+    color: $tertiary;
+    background-color: $secondary;
+    padding: 5px 13px;
+    border-radius: 10px;
+  }
+
+  .disabled {
+    visibility: hidden;
+  }
+}
+
+.select {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 150px;
+  background-color: $senary;
+  color: $quinary;
+  overflow-y: scroll;
+  padding: 0 20px;
+  margin: 0;
+
+  li {
+    cursor: pointer;
+  }
+}
+
+.scrollButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  background-color: $secondary;
+  color: $senary;
+  border: 2px solid $senary;
+  padding: 8px 12px;
+  border-radius: 50%;
+  transition: 0.3s all ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $senary;
+    color: $secondary;
+    border: 2px solid $secondary;
+    transform: scale(1.1);
+  }
+}

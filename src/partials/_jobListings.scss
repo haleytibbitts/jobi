@@ -1,0 +1,209 @@
+@use "./variables" as *;
+
+.listings {
+  padding: 0;
+
+  .job {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid $senary;
+    border-radius: 10px;
+    padding: 15px 35px;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      transform: scale(1.03);
+    }
+
+    .logoTitle {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .typeTitle {
+      p {
+        color: $quaternary;
+      }
+      span {
+        color: $quinary;
+        display: inline;
+      }
+
+      .fullTime {
+        color: $secondary;
+      }
+
+      .partTime {
+        color: #0b718a;
+      }
+      .hourly {
+        color: #7a0068;
+      }
+      .fixed {
+        color: #0c1082;
+      }
+    }
+
+    p,
+    button {
+      font-size: $bodySmall;
+    }
+
+    h3 {
+      font-size: $quaternaryTitle;
+      color: $quaternary;
+      line-height: 1.3rem;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        color: $secondary;
+      }
+    }
+
+    .imgContainer {
+      height: 50px;
+      width: 50px;
+    }
+
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  .typePoster {
+    width: 30vw;
+    max-width: 200px;
+
+    p {
+      color: $quinary;
+    }
+    span {
+      color: $quaternary;
+      display: inline;
+      line-height: 1.3rem;
+    }
+
+    .poster {
+      font-size: $bodyLarge;
+    }
+  }
+
+  .locationCategory {
+    width: 30vw;
+    max-width: 200px;
+
+    .category {
+      font-size: $bodyLarge;
+    }
+  }
+
+  .btns,
+  .logoSave,
+  .locationApply {
+    .saveBtn {
+      color: #d6d6d6;
+      background-color: transparent;
+      border: 1px solid #d6d6d6;
+      padding: 8px 10px;
+      border-radius: 50%;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        color: $quinary;
+        border: 1px solid $quinary;
+      }
+    }
+
+    .applyBtn {
+      font-family: $sans;
+      background-color: $secondary;
+      color: $senary;
+      border: none;
+      padding: 7px 15px 9px 15px;
+      border-radius: 15px;
+      margin-left: 10px;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        background-color: $senary;
+        color: $secondary;
+      }
+    }
+  }
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: center;
+
+  .postJob {
+    text-align: center;
+    font-size: $bodyLarge;
+    border: 1px solid $quaternary;
+    border-radius: 20px;
+    padding: 10px 25px 15px 25px;
+
+    span {
+      display: inline;
+      color: $secondary;
+    }
+
+    a {
+      color: $secondary;
+      text-decoration: underline;
+      transition: 0.3s all ease-in-out;
+
+      &:hover,
+      &:focus-visible {
+        color: $quinary;
+      }
+    }
+  }
+}
+
+.oops {
+  color: $quinary;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.listView {
+  .job {
+    width: 100%;
+    margin-bottom: 15px;
+
+    h3 {
+      width: 30vw;
+      max-width: 200px;
+    }
+  }
+}
+
+.gridView {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+
+  .job {
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 300px;
+
+    .logoSave,
+    .locationApply {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

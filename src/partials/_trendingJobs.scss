@@ -1,0 +1,63 @@
+@use "./variables" as *;
+
+.trendingJobs {
+  .carousel {
+    height: 35vh;
+
+    .jobs {
+      height: 100%;
+      padding: 0;
+      display: flex;
+      gap: 40px;
+      position: absolute;
+      top: 0;
+      left: 0px;
+
+      li {
+        width: 240px;
+        position: relative;
+
+        &:hover {
+          .overlay {
+            visibility: visible;
+          }
+        }
+
+        img {
+          object-fit: cover;
+        }
+
+        a {
+          width: 100%;
+          height: 100%;
+        }
+
+        .overlay {
+          visibility: hidden;
+          position: absolute;
+          display: flex;
+          align-items: flex-end;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          p {
+            background: linear-gradient(
+              0deg,
+              rgba(0, 0, 0, 1) 0%,
+              rgba(0, 0, 0, 0.6) 49%,
+              rgba(0, 0, 0, 0) 100%
+            );
+            width: 100%;
+            visibility: visible;
+            font-size: $quaternaryTitle;
+            padding: 50px 25px;
+            margin: 0;
+            color: $senary;
+          }
+        }
+      }
+    }
+  }
+}

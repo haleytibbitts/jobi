@@ -1,0 +1,67 @@
+@use "./variables" as *;
+
+.topBrands {
+  margin: 150px 0;
+
+  .wrapper {
+    display: flex;
+    gap: 100px;
+  }
+
+  .imgContainer {
+    position: relative;
+    flex: 1 1 0;
+
+    .logo {
+      position: absolute;
+      top: 0;
+      bottom: 20px;
+      left: 20px;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      flex-direction: column;
+      justify-content: center;
+
+      p {
+        padding-top: 10px;
+      }
+    }
+  }
+
+  .textContainer {
+    flex: 1 1 0;
+
+    p {
+      color: $quinary;
+      line-height: 2rem;
+    }
+  }
+
+  h2 {
+    font-size: $bodyLarge;
+    text-transform: uppercase;
+    color: $quinary;
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
+  }
+
+  a {
+    margin-top: 50px;
+    color: $quaternary;
+    font-size: $bodySmall;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $quinary;
+    }
+  }
+}

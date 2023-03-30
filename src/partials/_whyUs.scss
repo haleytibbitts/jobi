@@ -1,0 +1,107 @@
+@use "./variables" as *;
+
+.whyUs {
+  margin-top: 100px;
+
+  h2 {
+    font-size: $bodyLarge;
+    color: $quinary;
+  }
+
+  h3 {
+    font-size: $secondaryTitle;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  h4,
+  svg {
+    font-size: $quaternaryTitle;
+  }
+
+  li:nth-of-type(3) {
+    padding-bottom: 20px;
+  }
+
+  h3,
+  h4,
+  svg {
+    color: $secondary;
+  }
+
+  svg {
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $quinary;
+    }
+  }
+
+  p {
+    font-size: $bodyLarge;
+    color: $quinary;
+    padding-bottom: 10px;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      width: 85%;
+    }
+
+    li:nth-of-type(2),
+    li:nth-of-type(3) {
+      border-top: 2px solid $tertiary;
+    }
+  }
+
+  button {
+    background-color: $secondary;
+    color: $senary;
+    border: 1px solid $secondary;
+    padding: 10px 25px 12px 25px;
+    border-radius: 20px;
+    font-family: $sans;
+    font-size: $bodySmall;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+      color: $secondary;
+      background-color: $senary;
+      border-color: $secondary;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+
+    .imgContainer {
+      flex-basis: 50%;
+      min-width: 540px;
+      min-height: 615px;
+    }
+
+    .belowFold1 {
+      display: block;
+    }
+
+    .belowFold2 {
+      display: none;
+    }
+
+    .textContainer {
+      flex-basis: 50%;
+
+      .aboveFold {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}
