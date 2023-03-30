@@ -29,7 +29,7 @@ const BlogPreview = () => {
                 In order to succeed in life, we must challenge ourselves
                 regularly. In this post, we'll explore...
               </p>
-              <BsArrowRight />
+              <BsArrowRight aria-label="see blog post" />
             </Link>
           </li>
           <li>
@@ -46,7 +46,7 @@ const BlogPreview = () => {
                 Finding the right job can be a daunting task, but it's
                 achievable. These 10 strategies from a career...
               </p>
-              <BsArrowRight />
+              <BsArrowRight aria-label="see blog post" />
             </Link>
           </li>
           <li>
@@ -63,7 +63,7 @@ const BlogPreview = () => {
                 Self-doubt can be a major obstacle to achieving success in your
                 career. Overcoming it takes...
               </p>
-              <BsArrowRight />
+              <BsArrowRight aria-label="see blog post" />
             </Link>
           </li>
         </ul>

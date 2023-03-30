@@ -6,7 +6,7 @@ const Testimonial = ({ headline, review, name, location, img }) => {
       <div className="flexContainer">
         <div className="title">
           <h3>{headline}</h3>
-          <div className="rating">
+          <div className="rating" aria-label="5 star rating">
             <BsStarFill />
             <BsStarFill />
             <BsStarFill />

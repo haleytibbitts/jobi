@@ -47,7 +47,7 @@ const JobListItem = ({ job }) => {
         <p className="category">{jobCategory}</p>
       </div>
 
-      <div className="btns">
+      <div className="btns" aria-label="save job">
         <button className="saveBtn">
           <BsBookmarkDash />
         </button>

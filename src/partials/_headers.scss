@@ -50,6 +50,21 @@
 
     input {
       width: 20vw;
+
+      &::placeholder {
+        opacity: 1;
+      }
+      &::-moz-placeholder {
+        opacity: 1;
+      }
+
+      &::-webkit-input-placeholder {
+        opacity: 1;
+      }
+
+      &::-ms-input-placeholder {
+        opacity: 1;
+      }
     }
 
     .category {

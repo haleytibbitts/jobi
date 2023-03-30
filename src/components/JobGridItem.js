@@ -10,7 +10,7 @@ const JobGridItem = ({ job }) => {
         <div className="imgContainer">
           <img src={logo} alt={`The ${company} logo`} />
         </div>
-        <button className="saveBtn">
+        <button className="saveBtn" aria-label="save job">
           <BsBookmarkDash />
         </button>
       </div>

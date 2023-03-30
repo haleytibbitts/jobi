@@ -29,7 +29,11 @@ const WhyUs = () => {
                 tabIndex="0"
               >
                 <h4>Seamless Search</h4>
-                {isFeature1Open ? <BsChevronUp /> : <BsChevronDown />}
+                {isFeature1Open ? (
+                  <BsChevronUp aria-label="hide section" />
+                ) : (
+                  <BsChevronDown aria-label="show section" />
+                )}
               </div>
               <p
                 className="belowFold1"
