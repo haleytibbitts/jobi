@@ -206,6 +206,14 @@
     }
   }
 
+  .gridView {
+    .job {
+      h3 {
+        // width: 100%;
+      }
+    }
+  }
+
   .btmNav {
     .outer {
       flex-direction: column;
@@ -227,6 +235,19 @@
     .wrapper {
       flex-direction: column;
       gap: 20px;
+    }
+  }
+
+  .filter {
+    .rowOne {
+      flex-direction: column;
+    }
+  }
+
+  .jobDetails {
+    .jobStats {
+      flex-wrap: wrap;
+      align-items: flex-start;
     }
   }
 }

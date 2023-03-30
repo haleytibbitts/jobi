@@ -45,6 +45,7 @@ const TrendingJobs = () => {
               onPointerEnter={handleActiveLeft}
               onPointerLeave={handleActiveLeft}
               onClick={handleCarouselLeft}
+              aria-label="previous job"
             >
               {activeLeft ? <BsArrowLeft /> : <BsArrowLeftShort />}
             </button>
@@ -53,6 +54,7 @@ const TrendingJobs = () => {
               onPointerEnter={handleActiveRight}
               onPointerLeave={handleActiveRight}
               onClick={handleCarouselRight}
+              aria-label="next job"
             >
               {activeRight ? <BsArrowRight /> : <BsArrowRightShort />}
             </button>

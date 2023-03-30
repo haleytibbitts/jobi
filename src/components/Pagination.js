@@ -35,6 +35,8 @@ const Pagination = ({
       <li
         className={currentPage === 1 ? "disabled" : "paginationItem"}
         onClick={onPrevious}
+        tabIndex="0"
+        aria-label="previous page"
       >
         <BsArrowLeft />
       </li>
@@ -54,6 +56,7 @@ const Pagination = ({
               }
               onClick={() => onPageChange(pageNumber)}
               key={pageNumber + pageNumber}
+              tabIndex="0"
             >
               Last
             </li>
@@ -66,6 +69,7 @@ const Pagination = ({
               pageNumber === currentPage ? "selected" : "paginationItem"
             }
             onClick={() => onPageChange(pageNumber)}
+            tabIndex="0"
           >
             {pageNumber}
           </li>
@@ -75,6 +79,8 @@ const Pagination = ({
       <li
         className={currentPage === lastPage ? "disabled" : "paginationItem"}
         onClick={onNext}
+        tabIndex="0"
+        aria-label="next page"
       >
         <BsArrowRight />
       </li>

@@ -25,6 +25,7 @@ const ToTop = ({ headerRef }) => {
       className="scrollButton"
       onClick={handleScrollToTop}
       style={visible ? { display: "inline" } : { display: "none" }}
+      aria-label="scroll to top"
     >
       <BsChevronDoubleUp />
     </button>

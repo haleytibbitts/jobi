@@ -19,7 +19,11 @@ const TopNav = () => {
   return (
     <nav className="topNav">
       <Logo />
-      <button className="hamburger" onClick={handleHamburger}>
+      <button
+        aria-label="hamburger navigation menu"
+        className="hamburger"
+        onClick={handleHamburger}
+      >
         <GiHamburgerMenu />
       </button>
       <div

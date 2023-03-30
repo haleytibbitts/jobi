@@ -198,7 +198,7 @@ const JobListings = ({ jobs, filteredJobs }) => {
               <option value="highestPaying">Highest Paying</option>
             </select>
             {window.innerWidth >= 769 ? (
-              <button onClick={handleIsList}>
+              <button onClick={handleIsList} aria-label="list/grid view toggle">
                 {isList ? <BsGridFill /> : <GiHamburgerMenu />}
               </button>
             ) : null}

@@ -12,7 +12,12 @@ const Footer = () => {
         <p>Copyright ©2023 jobi inc.</p>
         <ul className="socials">
           <li>
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="facebook"
+            >
               <FaFacebookF />
             </a>
           </li>
@@ -21,6 +26,7 @@ const Footer = () => {
               href="https://www.instagram.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="instagram"
             >
               <FaInstagram />
             </a>
@@ -30,6 +36,7 @@ const Footer = () => {
               href="https://www.pinterest.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="pinterest"
             >
               <FaPinterestP />
             </a>
