@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import { Link } from "react-router-dom";
 
 const BottomNav = () => {
   return (
@@ -11,30 +12,58 @@ const BottomNav = () => {
           <li className="links">
             <h2>Links</h2>
             <ul>
-              <li>Pricing</li>
-              <li>About us</li>
-              <li>Careers</li>
-              <li>Blog</li>
+              <Link to={"/pricing"}>
+                <li>Pricing</li>
+              </Link>
+              <Link to={"/about-us"}>
+                <li>About us</li>
+              </Link>
+              <Link to={"/careers"}>
+                <li>Careers</li>
+              </Link>
+              <Link to={"/blog"}>
+                <li>Blog</li>
+              </Link>
             </ul>
           </li>
           <li>
             <h2>Products</h2>
             <ul>
-              <li>Take the tour</li>
-              <li>Live chat</li>
-              <li>Self-service</li>
-              <li>Mobile</li>
-              <li>Collaboration</li>
-              <li>Reviews</li>
+              <Link to={"/tour"}>
+                <li>Take the tour</li>
+              </Link>
+              <Link to={"/chat"}>
+                <li>Live chat</li>
+              </Link>
+              <Link to={"/self-service"}>
+                <li>Self-service</li>
+              </Link>
+              <Link to={"/mobile"}>
+                <li>Mobile</li>
+              </Link>
+              <Link to={"/collaboration"}>
+                <li>Collaboration</li>
+              </Link>
+              <Link to={"/reviews"}>
+                <li>Reviews</li>
+              </Link>
             </ul>
           </li>
           <li>
             <h2>Legal</h2>
             <ul>
-              <li>Terms of use</li>
-              <li>Terms & conditions</li>
-              <li>Privacy</li>
-              <li>Cookie policy</li>
+              <Link to={"/terms"}>
+                <li>Terms of use</li>
+              </Link>
+              <Link to={"/terms"}>
+                <li>Terms & conditions</li>
+              </Link>
+              <Link to={"/privacy"}>
+                <li>Privacy</li>
+              </Link>
+              <Link to={"/cookies"}>
+                <li>Cookie policy</li>
+              </Link>
             </ul>
           </li>
           <li className="newsletter">

@@ -9,16 +9,17 @@ import Footer from "./components/Footer";
 import JobListings from "./components/JobListings";
 import JobDetails from "./components/JobDetails";
 import Error from "./components/Error";
-import { useEffect, useState } from "react";
-import { getDatabase, ref, onValue, push } from "firebase/database";
-import axios from "axios";
-import { v4 as uuid } from "uuid";
+import { useEffect, useState, useRef } from "react";
+import { getDatabase, ref, onValue } from "firebase/database";
+import ToTop from "./components/ToTop";
 
 function App() {
   const [jobs, setJobs] = useState([]);
   const [curJob, setCurJob] = useState({});
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
+
+  const headerRef = useRef(null);
 
   const handleDropDown = () => {
     setIsDropDown(!isDropDown);
@@ -50,6 +51,7 @@ function App() {
         isDropDown={isDropDown}
         setIsDropDown={setIsDropDown}
         handleDropDown={handleDropDown}
+        headerRef={headerRef}
       />
 
       <Routes>
@@ -94,6 +96,7 @@ function App() {
       <SignUp />
       <BottomNav />
       <Footer />
+      <ToTop headerRef={headerRef} />
     </div>
   );
 }

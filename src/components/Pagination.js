@@ -41,7 +41,11 @@ const Pagination = ({
       {paginationRange.map((pageNumber) => {
         // If the pageItem is a DOT, render the DOTS unicode character
         if (pageNumber === "...") {
-          return <li className="paginationItem dots">...</li>;
+          return (
+            <li className="paginationItem dots" key={pageNumber + pageNumber}>
+              ...
+            </li>
+          );
         } else if (pageNumber === lastPage) {
           return (
             <li
@@ -49,6 +53,7 @@ const Pagination = ({
                 pageNumber === currentPage ? "selected" : "paginationItem"
               }
               onClick={() => onPageChange(pageNumber)}
+              key={pageNumber + pageNumber}
             >
               Last
             </li>

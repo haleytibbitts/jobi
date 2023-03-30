@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
-import { BsChevronDown, BsChevronUp, BsListUl } from "react-icons/bs";
+import { useMemo, useState } from "react";
+import { BsChevronDown, BsChevronUp, BsGridFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import categories from "../utilities/categories.json";
 import JobListItem from "./JobListItem";
+import JobGridItem from "./JobGridItem";
 import Pagination from "./Pagination";
 
 const JobListings = ({ jobs, filteredJobs }) => {
@@ -15,9 +16,15 @@ const JobListings = ({ jobs, filteredJobs }) => {
     return locationsTwo.sort();
   };
 
+  const [isList, setIsList] = useState(true);
+
+  const handleIsList = () => {
+    setIsList(!isList);
+  };
+
   const [isFilterOut, setIsFilterOut] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const PageSize = 10;
+  const PageSize = 12;
 
   const curTableData = useMemo(() => {
     let jobsLatest = [];
@@ -30,7 +37,6 @@ const JobListings = ({ jobs, filteredJobs }) => {
 
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    console.log("am i even running");
 
     return jobsLatest.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, filteredJobs, jobs]);
@@ -191,15 +197,27 @@ const JobListings = ({ jobs, filteredJobs }) => {
               <option value="oldest">Oldest</option>
               <option value="highestPaying">Highest Paying</option>
             </select>
-            <button>
-              <GiHamburgerMenu />
-            </button>
+            {window.innerWidth >= 769 ? (
+              <button onClick={handleIsList}>
+                {isList ? <BsGridFill /> : <GiHamburgerMenu />}
+              </button>
+            ) : null}
           </div>
         </div>
-        <ul className="listView">
-          {curTableData.map((job) => {
-            return <JobListItem job={job} />;
-          })}
+        <ul
+          className={
+            window.innerWidth < 769 || !isList
+              ? "gridView listings"
+              : "listView listings"
+          }
+        >
+          {window.innerWidth < 769 || !isList
+            ? curTableData.map((job) => {
+                return <JobGridItem job={job} />;
+              })
+            : curTableData.map((job) => {
+                return <JobListItem job={job} />;
+              })}
         </ul>
         <Pagination
           onPageChange={(page) => setCurrentPage(page)}

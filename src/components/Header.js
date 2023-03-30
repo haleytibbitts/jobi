@@ -3,7 +3,7 @@ import categories from "../utilities/categories.json";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp, BiLinkAlt } from "react-icons/bi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Header = ({
   curJob,
@@ -12,6 +12,7 @@ const Header = ({
   isDropDown,
   setIsDropDown,
   handleDropDown,
+  headerRef,
 }) => {
   const pathName = useLocation().pathname;
 
@@ -65,6 +66,7 @@ const Header = ({
 
   return (
     <header
+      ref={headerRef}
       className={
         pathName === "/"
           ? "homeHeader"
@@ -145,7 +147,11 @@ const Header = ({
                   </div>
                   <div className="category">
                     <label htmlFor="categorySelect">Category</label>
-                    <p className="placeholder" onClick={handleDropDown}>
+                    <p
+                      className="placeholder"
+                      onClick={handleDropDown}
+                      tabIndex="0"
+                    >
                       {selectValue ? selectValue : "Select:"}
                       {isDropDown ? <BiChevronUp /> : <BiChevronDown />}
                     </p>
@@ -161,6 +167,7 @@ const Header = ({
                             handleSelectValue(e);
                             handleDropDown(e);
                           }}
+                          tabIndex="0"
                         >
                           Any
                         </li>
@@ -173,6 +180,7 @@ const Header = ({
                                 handleSelectValue(e);
                                 handleDropDown();
                               }}
+                              tabIndex="0"
                             >
                               {category}
                             </li>
@@ -186,7 +194,7 @@ const Header = ({
                       e.preventDefault();
                       getJobs();
                     }}
-                    on
+                    tabIndex="0"
                   >
                     Search
                   </button>

@@ -1,23 +1,38 @@
 import { FaFacebookF, FaInstagram, FaPinterestP } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer>
       <div className="wrapper">
         <div className="footerLinks">
-          <a href="">Privacy & Terms.</a>
-          <a href="">Contact Us</a>
+          <Link to="/terms">Privacy & Terms.</Link>
+          <Link to="/contact">Contact Us</Link>
         </div>
         <p>Copyright ©2023 jobi inc.</p>
         <ul className="socials">
           <li>
-            <FaFacebookF />
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
+              <FaFacebookF />
+            </a>
           </li>
           <li>
-            <FaInstagram />
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaInstagram />
+            </a>
           </li>
           <li>
-            <FaPinterestP />
+            <a
+              href="https://www.pinterest.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaPinterestP />
+            </a>
           </li>
         </ul>
       </div>
