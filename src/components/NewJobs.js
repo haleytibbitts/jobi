@@ -12,8 +12,14 @@ const NewJobs = ({ jobs, isMobile }) => {
             <p>{`Explore all jobs >`}</p>
           </Link>
         </div>
-        <ul className={isMobile ? "gridView listings" : "listView listings"}>
-          {isMobile
+        <ul
+          className={
+            isMobile || window.innerWidth < 769
+              ? "gridView listings"
+              : "listView listings"
+          }
+        >
+          {isMobile || window.innerWidth < 769
             ? jobs
                 .slice(0)
                 .reverse()
