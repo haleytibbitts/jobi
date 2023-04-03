@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { BsChevronDown, BsChevronUp, BsGridFill } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,7 +7,13 @@ import JobListItem from "./JobListItem";
 import JobGridItem from "./JobGridItem";
 import Pagination from "./Pagination";
 
-const JobListings = ({ jobs, filteredJobs }) => {
+const JobListings = ({ jobs, filteredJobs, isMobile }) => {
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const listingsRef = useRef(null);
+
   const getLocations = () => {
     const locationsOne = jobs.map((job) => {
       return job.location.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -22,6 +28,27 @@ const JobListings = ({ jobs, filteredJobs }) => {
     setIsList(!isList);
   };
 
+  const [sortView, setSortView] = useState({
+    latest: true,
+    oldest: false,
+  });
+
+  const handleSortView = (e) => {
+    let sortObject = {
+      latest: true,
+      oldest: false,
+    };
+
+    if (e.target.value === "oldest") {
+      sortObject = {
+        latest: false,
+        oldest: true,
+      };
+    }
+
+    setSortView(sortObject);
+  };
+
   const [isFilterOut, setIsFilterOut] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const PageSize = 12;
@@ -30,16 +57,20 @@ const JobListings = ({ jobs, filteredJobs }) => {
     let jobsLatest = [];
 
     if (filteredJobs.length) {
-      jobsLatest = filteredJobs.slice(0).reverse();
+      jobsLatest = filteredJobs.slice(0);
     } else {
-      jobsLatest = jobs.slice(0).reverse();
+      jobsLatest = jobs.slice(0);
+    }
+
+    if (sortView.latest) {
+      jobsLatest = jobsLatest.reverse();
     }
 
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
 
     return jobsLatest.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, filteredJobs, jobs]);
+  }, [currentPage, filteredJobs, jobs, sortView]);
 
   return (
     <main className="jobListings">
@@ -182,7 +213,7 @@ const JobListings = ({ jobs, filteredJobs }) => {
             </form>
           ) : undefined}
         </div>
-        <div className="resultsInfo">
+        <div className="resultsInfo" ref={listingsRef}>
           <p>
             All{" "}
             <span>
@@ -193,11 +224,14 @@ const JobListings = ({ jobs, filteredJobs }) => {
           <div className="sort">
             <label htmlFor="sort">Sort:</label>
             <select name="sort" id="sort">
-              <option value="latest">Latest</option>
-              <option value="oldest">Oldest</option>
-              <option value="highestPaying">Highest Paying</option>
+              <option value="latest" onClick={handleSortView}>
+                Latest
+              </option>
+              <option value="oldest" onClick={handleSortView}>
+                Oldest
+              </option>
             </select>
-            {window.innerWidth >= 769 ? (
+            {!isMobile ? (
               <button onClick={handleIsList} aria-label="list/grid view toggle">
                 {isList ? <BsGridFill /> : <GiHamburgerMenu />}
               </button>
@@ -206,12 +240,10 @@ const JobListings = ({ jobs, filteredJobs }) => {
         </div>
         <ul
           className={
-            window.innerWidth < 769 || !isList
-              ? "gridView listings"
-              : "listView listings"
+            isMobile || !isList ? "gridView listings" : "listView listings"
           }
         >
-          {window.innerWidth < 769 || !isList
+          {isMobile || !isList
             ? curTableData.map((job) => {
                 return <JobGridItem job={job} />;
               })
@@ -220,7 +252,12 @@ const JobListings = ({ jobs, filteredJobs }) => {
               })}
         </ul>
         <Pagination
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={(page) => {
+            setCurrentPage(page);
+            listingsRef.current.scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
           totalCount={filteredJobs.length ? filteredJobs.length : jobs.length}
           currentPage={currentPage}
           pageSize={PageSize}

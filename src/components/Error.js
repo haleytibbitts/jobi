@@ -1,11 +1,14 @@
 import { BsArrowRight } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import error from "../assets/error.svg";
+import { useLayoutEffect } from "react";
 
 const Error = () => {
   console.log(useNavigate());
 
-  // useEffect(() => {});
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <section className="error">
       <div className="wrapper">

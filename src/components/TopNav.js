@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-const TopNav = () => {
+const TopNav = ({ isTablet, isMobile }) => {
   const [dropDown, setDropDown] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
@@ -29,7 +29,7 @@ const TopNav = () => {
       <div
         className="links"
         style={
-          window.innerWidth < 1025
+          isTablet || isMobile
             ? isBurgerOpen
               ? { display: "flex" }
               : { display: "none" }

@@ -13,6 +13,8 @@ const Header = ({
   setIsDropDown,
   handleDropDown,
   headerRef,
+  isTablet,
+  isMobile,
 }) => {
   const pathName = useLocation().pathname;
 
@@ -33,18 +35,20 @@ const Header = ({
   const getJobs = () => {
     const jobArray = jobs.filter((job) => {
       if (
-        selectValue === "Any" &&
+        job.jobCategory === selectValue &&
         (job.company.toLowerCase().includes(keywordValue.toLowerCase()) ||
           job.jobTitle.toLowerCase().includes(keywordValue.toLowerCase()) ||
           job.overview.toLowerCase().includes(keywordValue.toLowerCase()))
       ) {
         return job;
       } else if (
-        job.jobCategory === selectValue &&
+        selectValue === "" &&
         (job.company.toLowerCase().includes(keywordValue.toLowerCase()) ||
           job.jobTitle.toLowerCase().includes(keywordValue.toLowerCase()) ||
           job.overview.toLowerCase().includes(keywordValue.toLowerCase()))
       ) {
+        return job;
+      } else if (job.jobCategory === selectValue && keywordValue === "") {
         return job;
       }
     });
@@ -66,6 +70,7 @@ const Header = ({
 
   return (
     <header
+      id="header"
       ref={headerRef}
       className={
         pathName === "/"
@@ -82,7 +87,7 @@ const Header = ({
             : "noOverlay"
         }
       >
-        <TopNav />
+        <TopNav isTablet={isTablet} isMobile={isMobile} />
         {pathName === "/" ||
         pathName === "/jobs" ||
         pathName === `/jobs/${id}` ? (
@@ -143,6 +148,7 @@ const Header = ({
                       id="keywordInput"
                       placeholder="Google"
                       onChange={handleKeywordValue}
+                      value={keywordValue}
                     />
                   </div>
                   <div className="category">
