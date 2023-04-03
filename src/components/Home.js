@@ -8,7 +8,7 @@ import ClientReviews from "./ClientReviews";
 import BlogPreview from "./BlogPreview";
 import TopBrands from "./TopBrands";
 
-const Home = ({ jobs }) => {
+const Home = ({ jobs, headerRef }) => {
   return (
     <main className="home">
       <Partners />
@@ -18,7 +18,7 @@ const Home = ({ jobs }) => {
       <GetStarted />
       <WhyUs />
       <ClientReviews />
-      <BlogPreview />
+      <BlogPreview headerRef={headerRef} />
       <TopBrands />
     </main>
   );

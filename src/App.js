@@ -9,15 +9,19 @@ import Footer from "./components/Footer";
 import JobListings from "./components/JobListings";
 import JobDetails from "./components/JobDetails";
 import Error from "./components/Error";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import ToTop from "./components/ToTop";
+import Loader from "./components/Loader";
+import MountLoader from "./components/MountLoader";
 
 function App() {
   const [jobs, setJobs] = useState([]);
   const [curJob, setCurJob] = useState({});
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [isDropDown, setIsDropDown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [mountAnimation, setMountAnimation] = useState(true);
 
   const headerRef = useRef(null);
 
@@ -26,6 +30,21 @@ function App() {
   };
 
   useEffect(() => {
+    let visited = sessionStorage.getItem("visited");
+
+    if (visited) {
+      setMountAnimation(false);
+    } else {
+      setTimeout(() => {
+        setMountAnimation(false);
+        sessionStorage.setItem("visited", true);
+      }, 5000);
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+
     try {
       const database = getDatabase(firebase);
       const dbRef = ref(database, "allJobs");
@@ -36,14 +55,58 @@ function App() {
           newState.push(data[key]);
         }
         setJobs(newState);
+        setIsLoading(false);
       });
     } catch (error) {
       alert(error);
+      setIsLoading(false);
     }
   }, []);
 
+  const [isMobile, setIsMobile] = useState();
+  const [isTablet, setIsTablet] = useState();
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      if (window.innerWidth < 1026 && window.innerWidth >= 769) {
+        setIsTablet(true);
+      } else {
+        setIsTablet(false);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1026 && window.innerWidth >= 769) {
+        setIsTablet(true);
+      } else {
+        setIsTablet(false);
+      }
+    });
+
+    window.addEventListener("load", () => {
+      if (window.innerWidth < 769) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 769) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <div>
+      {mountAnimation ? <MountLoader /> : null}
       <Header
         jobs={jobs}
         curJob={curJob}
@@ -52,19 +115,24 @@ function App() {
         setIsDropDown={setIsDropDown}
         handleDropDown={handleDropDown}
         headerRef={headerRef}
+        isTablet={isTablet}
+        isMobile={isMobile}
       />
 
       <Routes>
-        <Route path="/" element={<Home jobs={jobs} />} />
+        <Route
+          path="/"
+          element={
+            <Home jobs={jobs} isMobile={isMobile} headerRef={headerRef} />
+          }
+        />
         <Route
           path="/jobs"
           element={
             <JobListings
               jobs={jobs}
               filteredJobs={filteredJobs}
-              isDropDown={isDropDown}
-              setIsDropDown={setIsDropDown}
-              handleDropDown={handleDropDown}
+              isMobile={isMobile}
             />
           }
         />

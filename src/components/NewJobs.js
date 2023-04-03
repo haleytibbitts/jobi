@@ -2,7 +2,7 @@ import JobListItem from "./JobListItem";
 import { Link } from "react-router-dom";
 import JobGridItem from "./JobGridItem";
 
-const NewJobs = ({ jobs }) => {
+const NewJobs = ({ jobs, isMobile }) => {
   return (
     <section className="newJobs">
       <div className="wrapper">
@@ -14,10 +14,12 @@ const NewJobs = ({ jobs }) => {
         </div>
         <ul
           className={
-            window.innerWidth < 769 ? "gridView listings" : "listView listings"
+            isMobile || window.innerWidth < 769
+              ? "gridView listings"
+              : "listView listings"
           }
         >
-          {window.innerWidth < 769
+          {isMobile || window.innerWidth < 769
             ? jobs
                 .slice(0)
                 .reverse()
