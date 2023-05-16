@@ -5,14 +5,9 @@ import { useState } from "react";
 
 const WhyUs = () => {
   const [isFeature1Open, setIsFeature1Open] = useState(true);
-  const [isFeature2Open, setIsFeature2Open] = useState(false);
 
   const handleFeature1Open = () => {
     setIsFeature1Open(!isFeature1Open);
-  };
-
-  const handleFeature2Open = () => {
-    setIsFeature2Open(!isFeature2Open);
   };
 
   return (
@@ -48,16 +43,16 @@ const WhyUs = () => {
             <li>
               <div
                 className="aboveFold"
-                onClick={handleFeature2Open}
+                onClick={handleFeature1Open}
                 tabIndex="0"
               >
                 <h4>Hire top talents</h4>
-                {isFeature2Open ? <BsChevronUp /> : <BsChevronDown />}
+                {isFeature1Open ? <BsChevronDown /> : <BsChevronUp />}
               </div>
               <p
                 className="belowFold2"
                 style={
-                  isFeature2Open ? { display: "block" } : { display: "none" }
+                  isFeature1Open ? { display: "none" } : { display: "block" }
                 }
               >
                 Jobi gives you access to the best talents in your field. Find

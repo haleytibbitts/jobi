@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp, BiLinkAlt } from "react-icons/bi";
 import { useState } from "react";
+import Loader from "./Loader";
 
 const Header = ({
   curJob,
@@ -15,6 +16,7 @@ const Header = ({
   headerRef,
   isTablet,
   isMobile,
+  isLoading,
 }) => {
   const pathName = useLocation().pathname;
 
@@ -62,13 +64,14 @@ const Header = ({
 
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    console.log(window.location);
     alert(
       `The ${jobTitle} job at ${company} has been saved to your clipboard!`
     );
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <header
       id="header"
       ref={headerRef}
@@ -108,6 +111,8 @@ const Header = ({
                   <h1>Job Listings</h1>
                   <p>We deliver blazing fast & string work solutions.</p>
                 </>
+              ) : isLoading ? (
+                <Loader />
               ) : (
                 <>
                   <h1 className="jobHeading">{jobTitle}</h1>
@@ -116,15 +121,17 @@ const Header = ({
                   </p>
                 </>
               )}
-              {pathName === `/jobs/${id}` ? (
+              {isLoading ? (
+                <Loader />
+              ) : pathName === `/jobs/${id}` ? (
                 <div className="postingLinks">
                   <button className="facebook">
-                    <a href={facebook} target="_blank" rel="noreferrer">
+                    <a href={facebook} rel="noreferrer">
                       <FaFacebookF /> Facebook
                     </a>
                   </button>
                   <button className="twitter">
-                    <a href={twitter} target="_blank" rel="noreferrer">
+                    <a href={twitter} rel="noreferrer">
                       <FaTwitter /> Twitter
                     </a>
                   </button>
