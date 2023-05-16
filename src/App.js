@@ -55,8 +55,8 @@ function App() {
           newState.push(data[key]);
         }
         setJobs(newState);
-        setIsLoading(false);
       });
+      setIsLoading(false);
     } catch (error) {
       alert(error);
       setIsLoading(false);
@@ -117,13 +117,20 @@ function App() {
         headerRef={headerRef}
         isTablet={isTablet}
         isMobile={isMobile}
+        isLoading={isLoading}
       />
 
       <Routes>
         <Route
           path="/"
           element={
-            <Home jobs={jobs} isMobile={isMobile} headerRef={headerRef} />
+            <Home
+              jobs={jobs}
+              isMobile={isMobile}
+              headerRef={headerRef}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
           }
         />
         <Route
@@ -133,13 +140,21 @@ function App() {
               jobs={jobs}
               filteredJobs={filteredJobs}
               isMobile={isMobile}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
             />
           }
         />
         <Route
           path="/jobs/:pageId"
           element={
-            <JobDetails jobs={jobs} curJob={curJob} setCurJob={setCurJob} />
+            <JobDetails
+              jobs={jobs}
+              curJob={curJob}
+              setCurJob={setCurJob}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+            />
           }
         />
         {/* FUTURE IMPLEMENTATIONS
